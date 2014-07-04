@@ -10,7 +10,7 @@
         * {
             margin: 0px;
             padding: 0px;
-        }  
+        }
 
         .fm_main_top {
             background: url("/images/outer_bn2_8960d8f.gif") repeat-x scroll left -53px #f7f7f7;
@@ -214,6 +214,9 @@
     <script src="/js/Guid.js" type="text/javascript"></script>
     <link href="/js/JDialog/JDialogCss.css" rel="stylesheet" />
     <script src="/js/JDialog/Jquery_Fn_Dialog.js" type="text/javascript"></script>
+    <link href="js/ztree/zTreeStyle.css" rel="stylesheet" />
+    <link href="js/ztree/demo.css" rel="stylesheet" />
+    <script src="js/ztree/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
 
@@ -227,6 +230,7 @@
         $(function () {
 
             getFiles($("#hidParentID").val());
+            filesTreeShow();
 
             //LI文件夹层移入移出
             $(".fm_main_file_area li").live("mouseover", function () {
@@ -483,6 +487,45 @@
             });
         }
 
+
+        var setting = {
+            view: {
+                showLine: false,
+                showIcon: false,
+                selectedMulti: false,
+                dblClickExpand: false,
+                addDiyDom: addDiyDom
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                beforeClick: beforeClick
+            }
+        };
+
+        function filesTreeShow() {
+
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/WebService.asmx/GetAllFilesForTree",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(XMLHttpRequest);
+                },
+                //timeout: 1000, // 设置请求超时时间
+                success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
+
+                    var treeObj = $("#treeDemo"); alert(data.d);
+                    $.fn.zTree.init(treeObj, setting, eval(data.d));
+                }
+            });
+        }
+
         //DIV层替换
         function reNameReplace() {
             $(".fm_main_file_area_li_div3").parents("li").find("fm_main_file_area_li_div4").attr("class", "fm_main_file_area_li_div1");
@@ -494,6 +537,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <div class="zTreeDemoBackground left" style="margin-top: -10px; width: 179px; height: 100px;">
+            <ul id="treeDemo" class="ztree" style="width: 100%; overflow-y: auto; height: 100%;">
+            </ul>
+        </div>
 
         <ul class="fm_main_menu">
             <li><a>打开</a></li>
