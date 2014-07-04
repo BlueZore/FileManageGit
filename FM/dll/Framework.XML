@@ -1,0 +1,1182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Framework</name>
+    </assembly>
+    <members>
+        <member name="T:Portal.Framework.AdminInit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Portal.Framework.FWMethod">
+            <summary>
+            方法集 _FW对外开放，_FE对内非开放
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetDate(System.String)">
+            <summary>
+            从数据表中向页面输出日期值
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetDate(System.String)">
+            <summary>
+            从页面向输出数据表添加值
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod.GetRandom(System.Int32)">
+            <summary>
+            位数
+            </summary>
+            <param name="digits">生成多少任意位数的 字符（以数字形式）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod.Getoperationsystem(System.Web.HttpRequest)">
+            <summary>
+            操作系统版本 
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod.Getbrowser(System.Web.HttpRequest)">
+            <summary>
+            浏览器版本
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWIsObjectNullOrEmpty(System.Object)">
+            <summary>
+            判断object类型值是Null还是空字符，true表示值可能为Null或Empty
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetHtmlSimpleText(System.String)">
+            <summary>
+            从HTML中提取纯文字
+            </summary>
+            <param name="strHtml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWCutByteLength(System.String,System.Int32)">
+            <summary>
+            取定长字符串，比如取前一段新闻的前５０个字符 超位无。。。
+            </summary>
+            <param name="txt">整段文本</param>
+            <param name="length">要取的字符数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWCutByteLength(System.String,System.Int32,System.String)">
+            <summary>
+            取定长字符串，比如取前一段新闻的前５０个字符 超位无。。。
+            </summary>
+            <param name="txt">整段文本</param>
+            <param name="length">要取的字符数</param>
+            <param name="app">追加。。。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWAlert(System.String)">
+            <summary>
+            在页面弹出提示框(集成于基类BasePage)
+            </summary>
+            <param name="msg">在提示框中显示的内容</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWAlert(System.String,System.Web.UI.Page)">
+            <summary>
+            根据参数页弹出窗口
+            </summary>
+            <param name="msg"></param>
+            <param name="page"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWAlert(System.String,System.String)">
+            <summary>
+            在页面弹出提示框后跳转页面(集成于基类BasePage)
+            </summary>
+            <param name="msg">提示信息</param>
+            <param name="windowname">新窗口名称</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWAlertNo">
+            <summary>
+            在页面弹出越权操作提示框(集成于基类BasePage)，如果弹出页越权，则关闭弹出页
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWAlertJS(System.String)">
+            <summary>
+            执行JS脚本，注意结尾需要自写分号；
+            </summary>
+            <param name="javascriptstr"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWToHTML(System.String)">
+            <summary>
+            将文本输入框里的文本转换为html文本，以便直接在html页显示
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWToText(System.String)">
+            <summary>
+             一般编辑时用，将经过转换的文本重新显示在文本框中编辑前调用此函数
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetRequestFilename">
+            <summary>
+            取得当前Request Url的文件名称
+            </summary>
+            <returns>返回当前Request Url的文件名称</returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetChinaWeek(System.DateTime)">
+            <summary>
+            获取当前日期的中文星期
+            </summary>
+            <param name="D1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetDataTimeLong">
+            <summary>
+            例如图片名攒改等
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGotOS(System.Web.HttpRequest)">
+            <summary>
+            操作系统版本 
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetBrowser(System.Web.HttpRequest)">
+            <summary>
+            浏览器版本
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWToSBC(System.String)">
+            
+               <summary>   
+               转全角的函数(SBC   case)   
+               </summary>   
+               <param   name="input">任意字符串</param>   
+               <returns>全角字符串</returns>   
+            <remarks>   
+            全角空格为12288，半角空格为32   
+            其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248   
+            </remarks>                   
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWToDBC(System.String)">
+            
+               <summary>   
+               转半角的函数(DBC   case)   
+               </summary>   
+               <param   name="input">任意字符串</param>   
+               <returns>半角字符串</returns>   
+            <remarks>   
+            全角空格为12288，半角空格为32   
+            其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248   
+            </remarks>   
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWConvertToAge(System.String)">
+            <summary>
+            通过日期获取年龄
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBirthDayToAge(System.String)">
+            <summary>
+            出生日期转年龄
+            </summary>
+            <param name="date">出生日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWCreateDir">
+            <summary>
+            计算当前子文件夹，如果没有就创建，有则返回子文件夹名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWImageUpLoad(System.Web.HttpFileCollection)">
+            <summary>
+            图片上传
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetMarkPic(System.String,System.String,System.String,System.String,System.Collections.ArrayList)">
+            <summary>
+            添加水印
+            </summary>
+            <param name="dir">保存文件夹</param>
+            <param name="file1">文件</param>
+            <param name="fileName">文件名</param>
+            <param name="imgType">文件类型</param>
+            <param name="arr">图片数组</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod.SetMarkPic(System.String,System.String,System.Single,System.Single,System.String)">
+            <summary>
+            添加水印
+            </summary>
+            <param name="oldpath"></param>
+            <param name="saveto"></param>
+            <param name="rx"></param>
+            <param name="ry"></param>
+            <param name="picformat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWIsUpLoadImage(System.Collections.ArrayList)">
+            <summary>
+            验证图片格式
+            </summary>
+            <param name="arr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetUpLoadImage(System.Object,System.Web.UI.WebControls.TextBox)">
+            <summary>
+            获取上传图片
+            </summary>
+            <param name="obj"></param>
+            <param name="imgPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWFlashUpLoad(System.Web.HttpFileCollection)">
+            <summary>
+            图片上传
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWDataSetRegex(System.Data.DataSet)">
+            <summary>
+            DataSet验证，针对一个表
+            </summary>
+            <param name="ds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWDataSetRegex(System.Data.DataSet,System.Int32)">
+            <summary>
+            DataSet验证，适用于多个表
+            </summary>
+            <param name="ds"></param>
+            <param name="TableNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEDataSetRegex(System.Data.DataSet,System.Int32)">
+            <summary>
+            DataSet验证
+            </summary>
+            <param name="ds"></param>
+            <param name="TableNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindGridView(System.Web.UI.WebControls.GridView,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            GridView绑定
+            </summary>
+            <param name="gv">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindGridView(System.Web.UI.WebControls.GridView,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.String)">
+            <summary>
+            GridView绑定
+            </summary>
+            <param name="gv">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="Connection">数据连接</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindGridView(System.Web.UI.WebControls.GridView,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            后台GridView绑定
+            </summary>
+            <param name="gv">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">无数据显示</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindGridView(System.Web.UI.WebControls.GridView,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl,System.Int32)">
+            <summary>
+            后台GridView绑定（自定义分页）
+            </summary>
+            <param name="gv">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">无数据显示</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+            <param name="PageSize_">页数</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDataList(System.Web.UI.WebControls.DataList,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            DataList控件绑定
+            </summary>
+            <param name="dl">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDataList(System.Web.UI.WebControls.DataList,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.String)">
+            <summary>
+            DataList控件绑定
+            </summary>
+            <param name="dl">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="Connection">数据库连接</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDataList(System.Web.UI.WebControls.DataList,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            DataList绑定
+            </summary>
+            <param name="dl">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDataList(System.Web.UI.WebControls.DataList,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl,System.Int32)">
+            <summary>
+            DataList绑定（自定义分页）
+            </summary>
+            <param name="dl">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+            <param name="PageSize_">自定义分页</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindDataList(System.Web.UI.WebControls.DataList,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            DataList绑定
+            </summary>
+            <param name="dl">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindRepeater(System.Web.UI.WebControls.Repeater,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            Repeater控件绑定
+            </summary>
+            <param name="rp">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindRepeater(System.Web.UI.WebControls.Repeater,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.String)">
+            <summary>
+            Repeater控件绑定
+            </summary>
+            <param name="rp">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="Connection">数据库连接</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindRepeater(System.Web.UI.WebControls.Repeater,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            Repeater绑定
+            </summary>
+            <param name="rp">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindRepeater(System.Web.UI.WebControls.Repeater,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl,System.Int32)">
+            <summary>
+            Repeater绑定（自定义分页）
+            </summary>
+            <param name="rp">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+            <param name="PageSize_">自定义分页</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindRepeater(System.Web.UI.WebControls.Repeater,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.Web.UI.HtmlControls.HtmlGenericControl)">
+            <summary>
+            Repeater绑定
+            </summary>
+            <param name="dl">绑定控件</param>
+            <param name="anp">分布控件</param>
+            <param name="param">Sql语句</param>
+            <param name="keyOrder">排序字段</param>
+            <param name="formOrder">排序方式，1Desc降序，2Asc升序</param>
+            <param name="nodata">div</param>
+            <param name="rowStar">如果大于一页，输出数量统计</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindAspNetPagerDiv(System.Web.UI.HtmlControls.HtmlGenericControl,Wuqi.Webdiyer.AspNetPager,System.Boolean)">
+            <summary>
+            统计页数量
+            </summary>
+            <param name="rowStar"></param>
+            <param name="anp"></param>
+            <param name="bool_"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindGridViewDataList(System.Web.UI.WebControls.GridView,System.Web.UI.WebControls.DataList,System.Web.UI.WebControls.Repeater,Wuqi.Webdiyer.AspNetPager,DBHelper.SQL.FWParameter,System.String,System.Int32,System.Web.UI.HtmlControls.HtmlGenericControl,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="gv"></param>
+            <param name="dl"></param>
+            <param name="anp"></param>
+            <param name="param"></param>
+            <param name="keyOrder"></param>
+            <param name="formOrder"></param>
+            <param name="nodata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod.PageDataSet(DBHelper.SQL.FWParameter,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            分页DataSet处理
+            </summary>
+            <param name="param"></param>
+            <param name="keyOrder"></param>
+            <param name="formOrder">，1Desc降序，2Asc升序</param>
+            <param name="PageSize"></param>
+            <param name="pageIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod.CastPage(DBHelper.SQL.FWParameter,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            SQL分布  keyOrder排序，formOrder排序方式，1Desc降序，2Asc升序，indexPage页序号
+            </summary>
+            <param name="param"></param>
+            <param name="keyOrder"></param>
+            <param name="formOrder"></param>
+            <param name="PageSize"></param>
+            <param name="indexPage"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWDelGridViewRow(System.String,System.Web.UI.WebControls.GridViewCommandEventArgs)">
+            <summary>
+            物理删除数据
+            </summary>
+            <param name="table">去掉tab_的表名</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWDelGridViewRow(System.String,System.Web.UI.WebControls.GridViewCommandEventArgs,System.Boolean)">
+            <summary>
+            逻辑删除数据
+            </summary>
+            <param name="table">去掉tab_的表名</param>
+            <param name="e"></param>
+            <param name="logic">从逻辑上删除数据，但数据仍然保留</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWFindDate(DBHelper.SQL.FWParameter,System.Web.UI.StateBag,System.String,System.String)">
+            <summary>
+            适用于搜索中有日期范围
+            </summary>
+            <param name="param"></param>
+            <param name="view"></param>
+            <param name="field">字段</param>
+            <param name="viewName">视图中名称，如date1,date2</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWFindFloat(DBHelper.SQL.FWParameter,System.Web.UI.StateBag,System.String)">
+            <summary>
+            适用于浮点型区间搜索，最小值fmin，最大值fmax
+            </summary>
+            <param name="param"></param>
+            <param name="view"></param>
+            <param name="field"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWFindInt(DBHelper.SQL.FWParameter,System.Web.UI.StateBag,System.String,System.String)">
+            <summary>
+            适用于数字区间搜索
+            </summary>
+            <param name="param"></param>
+            <param name="view"></param>
+            <param name="field"></param>
+            <param name="viewName"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.String,System.String,System.String)">
+            <summary>
+            绑定CheckBoxList控件
+            </summary>
+            <param name="cbl">控件</param>
+            <param name="tab">表名</param>
+            <param name="fieldName">name名</param>
+            <param name="fieldValue">value值</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.String,System.String,System.String,System.String)">
+            <summary>
+            绑定CheckBoxList控件
+            </summary>
+            <param name="cbl">控件</param>
+            <param name="tab">表名</param>
+            <param name="fieldName">name名</param>
+            <param name="fieldValue">value值</param>
+            <param name="where">条件</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.String,System.String,System.String,System.String)">
+            <summary>
+            绑定CheckBoxList控件
+            </summary>
+            <param name="cbl">控件</param>
+            <param name="tab">表名</param>
+            <param name="fieldName">name名</param>
+            <param name="fieldValue">value值</param>
+            <param name="where">条件</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.Web.UI.WebControls.TextBox,System.Boolean)">
+            <summary>
+            获取CheckBoxList带有其它手填项的控件群
+            </summary>
+            <param name="cbl">CheckBoxList</param>
+            <param name="_other">其它手填项</param>
+            <param name="type">true是ID，false是Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.Boolean)">
+            <summary>
+            获取CheckBoxList选中值，type指绑定ID还是Name
+            </summary>
+            <param name="cbl">CheckBoxList</param>
+            <param name="type">true是ID，false是Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetCheckBoxListw(System.Web.UI.WebControls.CheckBoxList,System.Web.UI.WebControls.TextBox,System.Web.UI.WebControls.TextBox,System.Boolean)">
+            <summary>
+            多选框其它项有二个可添值时
+            </summary>
+            <param name="cbl"></param>
+            <param name="_other"></param>
+            <param name="_other2"></param>
+            <param name="type">true是ID，false是Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.Web.UI.WebControls.TextBox,System.String,System.String,System.Boolean)">
+            <summary>
+            设置CheckBoxList带有其它手填项的控件群
+            </summary>
+            <param name="cbl">CheckBoxList</param>
+            <param name="_other">其它手填项</param>
+            <param name="cblStr"></param>
+            <param name="_otherStr"></param>
+            <param name="type">true是ID，false是Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetCheckBoxListw(System.Web.UI.WebControls.CheckBoxList,System.String,System.Boolean)">
+            <summary>
+            设置CheckBoxList带有其它手填项的控件群wlh
+            </summary>
+            <param name="cbl">CheckBoxList</param>
+            <param name="cblStr"></param>
+            <param name="type">true是ID，false是Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetCheckBoxList(System.Web.UI.WebControls.CheckBoxList,System.String,System.Boolean)">
+            <summary>
+            设置CheckBoxList选中值
+            </summary>
+            <param name="cbl">CheckBoxList</param>
+            <param name="cblStr"></param>
+            <param name="type">true是ID，false是Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSeeCheckBoxList(System.Web.UI.WebControls.Label,System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            读取CheckBoxList中多选值，绑定到Label中
+            </summary>
+            <param name="cbl"></param>
+            <param name="cblStr"></param>
+            <param name="fieldValue">ID</param>
+            <param name="FieldName">Name</param>
+            <param name="TabName">表名</param>
+            <param name="type">true是ID，false是Name</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindRadioButtonList(System.Web.UI.WebControls.RadioButtonList,System.String,System.String,System.String)">
+            <summary>
+            绑定RadioButtonList控件
+            </summary>
+            <param name="rbl">控件</param>
+            <param name="tab">表名</param>
+            <param name="fieldName">name名</param>
+            <param name="fieldValue">value值</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWGetRadioButtonList(System.Web.UI.WebControls.RadioButtonList,System.Web.UI.WebControls.TextBox)">
+            <summary>
+            获取RadioButtonList带有其它手填项的控件群
+            </summary>
+            <param name="rbl">RadioButtonList</param>
+            <param name="_other">其它手填项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetRadioButtonList(System.Web.UI.WebControls.RadioButtonList,System.Web.UI.WebControls.TextBox,System.String,System.String)">
+            <summary>
+            设置RadioButtonList带有其它手填项的控件群
+            </summary>
+            <param name="rbl">RadioButtonList</param>
+            <param name="_other">其它手填项</param>
+            <param name="rblStr"></param>
+            <param name="_otherStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            DropDownList绑定(无条件)，设定指向选项
+            </summary>
+            <param name="ddl">DropDownList</param>
+            <param name="fieldID">value</param>
+            <param name="fieldName">text</param>
+            <param name="fieldTable">表名</param>
+            <param name="value">请选择中Value默认值</param>
+            <param name="select">选项</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSetDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            DropDownList绑定(具有条件)，设定指向选项
+            </summary>
+            <param name="ddl">DropDownList</param>
+            <param name="fieldID">value</param>
+            <param name="fieldName">text</param>
+            <param name="where">条件</param>
+            <param name="fieldTable">表名</param>
+            <param name="value">请选择中Value默认值</param>
+            <param name="select">选项</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String,System.String)">
+            <summary>
+            DropDownList绑定(无条件)
+            </summary>
+            <param name="ddl">DropDownList</param>
+            <param name="fieldID">value</param>
+            <param name="fieldName">text</param>
+            <param name="fieldTable">表名</param>
+            <param name="value">请选择中Value默认值</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            DropDownList绑定(具有条件)
+            </summary>
+            <param name="ddl">DropDownList</param>
+            <param name="fieldID">fieldID</param>
+            <param name="fieldName">fieldName</param>
+            <param name="where">条件</param>
+            <param name="fieldTable">表名</param>
+            <param name="value">请选择中Value默认值</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindDropDownList(System.Web.UI.WebControls.DropDownList,System.String,System.String)">
+            <summary>
+            DropDownList绑定 第一步
+            </summary>
+            <param name="ddl"></param>
+            <param name="sql"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindDropDownList(System.Web.UI.WebControls.DropDownList,DBHelper.SQL.FWParameter,System.String)">
+            <summary>
+            DropDownList绑定 第二步
+            </summary>
+            <param name="ddl"></param>
+            <param name="param"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDropDownList(System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.Web.UI.WebControls.DropDownList,System.String,System.String,System.String,System.String,System.Data.DataSet)">
+            <summary>
+            四个下拉框绑定（所属机构 【专属】）
+            </summary>
+            <param name="first">市 </param>
+            <param name="second">区</param>
+            <param name="third">办事处</param>
+            <param name="fourth">社区</param>
+            <param name="firstField">市在DS中对应字段</param>
+            <param name="secondField">区在DS中对应字段</param>
+            <param name="thirdField">办事处在DS中对应字段</param>
+            <param name="fourthFied">社区在DS中对应字段</param>
+            <param name="ds"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindListBox(System.Web.UI.WebControls.ListBox,System.String,System.String,System.String,System.String)">
+            <summary>
+            ListBox 绑定
+            </summary>
+            <param name="LB"></param>
+            <param name="tab"></param>
+            <param name="fieldName"></param>
+            <param name="fieldValue"></param>
+            <param name="where"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWLike(System.String,System.Boolean)">
+            <summary>
+            sql like 值
+            </summary>
+            <param name="like"></param>
+            <param name="replace"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDictionary(System.String,System.Web.UI.WebControls.DropDownList)">
+            <summary>
+            字典项绑定
+            </summary>
+            <param name="MainTypeName">字典名</param>
+            <param name="ddl"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDictionary(System.String,System.Web.UI.WebControls.DropDownList,System.Boolean)">
+            <summary>
+            字典项绑定(采用辅助字段)
+            </summary>
+            <param name="MainTypeName">字典名</param>
+            <param name="ddl"></param>
+            <param name="Assistant">采用辅助字段</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDictionary(System.String,System.Web.UI.WebControls.CheckBoxList)">
+            <summary>
+            字典项绑定
+            </summary>
+            <param name="MainTypeName">字典名</param>
+            <param name="cbl"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDictionary(System.String,System.Web.UI.WebControls.RadioButtonList)">
+            <summary>
+            字典项绑定
+            </summary>
+            <param name="MainTypeName">字典名</param>
+            <param name="rbl"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWBindDictionary(System.String,System.Web.UI.WebControls.RadioButtonList,System.Boolean)">
+            <summary>
+            字典项绑定(采用辅助字段)
+            </summary>
+            <param name="MainTypeName">字典名</param>
+            <param name="rbl"></param>
+            <param name="Assistant">采用辅助字段</param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FEBindDictionaryParam(System.String)">
+            <summary>
+            字典项绑定SQL
+            </summary>
+            <param name="MainTypeName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWCookieAdd(System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Cookie添加（同时支持Session添加），如果days大于0设置Cookie生存周期天数；等于0不设置，随浏览器关闭而结果
+            </summary>
+            <param name="name"></param>
+            <param name="id"></param>
+            <param name="days"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWCookieRegex(System.String)">
+            <summary>
+            验证Cookie是否存在
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWCookieClear(System.String,System.Boolean)">
+            <summary>
+            Cookie清空（支持Session清空）
+            </summary>
+            <param name="name"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSessionAdd(System.String,System.String)">
+            <summary>
+            Session添加
+            </summary>
+            <param name="name"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSessionRegex(System.String)">
+            <summary>
+            验证Session是否存在
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWMethod._FWSessionClear">
+            <summary>
+            Session清空
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.AdminInit._FWAdminID">
+            <summary>
+            账号ID
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.AdminInit.CookieName">
+            <summary>
+            Cookie名
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.AdminInit._FWPowerIndex">
+            <summary>
+            权限序号
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.#ctor">
+            <summary>
+            实例化
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.OnPreInit(System.EventArgs)">
+            <summary>
+            自动加载
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.session">
+            <summary>
+            Session权限验证
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.cookie">
+            <summary>
+            Cookie权限验证
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.ExePow(System.String)">
+            <summary>
+            执行权限验证
+            </summary>
+            <param name="value">登录信息表ID</param>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.GetCookieAndSessionValue(System.String)">
+            <summary>
+            从CookieAndSession获取值
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.ErrorOut">
+            <summary>
+            运行出错，框架页跳转登录页
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.AdminInit.AspPageUrl">
+            <summary>
+            获取页名
+            </summary>
+            <returns>页名</returns>
+        </member>
+        <member name="T:Portal.Framework.FWRegex">
+            <summary>
+            验证机制 
+            徐松涛 制
+            v1.0
+            说明：验证机制 必须与 AutoValidate.js一起使用
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.form">
+            <summary>
+            form控件
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.nullRegex">
+            <summary>
+            空正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.emaliRegex">
+            <summary>
+            邮箱正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.anRegex">
+            <summary>
+            账号正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.pwdRegex">
+            <summary>
+            密码正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.mathRegex">
+            <summary>
+            数字正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.ageRegex">
+            <summary>
+            年龄正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.postRegex">
+            <summary>
+            邮编正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.phoneRegex">
+            <summary>
+            电话正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.cardRegex">
+            <summary>
+            身份证正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.priceRegex">
+            <summary>
+            金钱正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.dateRegex">
+            <summary>
+            日期正则表达式
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWRegex.timeRegex">
+            <summary>
+            时间正则表达式
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.#ctor(System.Web.UI.HtmlControls.HtmlForm)">
+            <summary>
+            参数实例化，加载form控件
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.Run">
+            <summary>
+            执行验证
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.RegexNull(System.Web.UI.WebControls.TextBox)">
+            <summary>
+            非空验证
+            </summary>
+            <param name="tbTmp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.RegexNullCode(System.Web.UI.WebControls.TextBox)">
+            <summary>
+            非空验证编号
+            </summary>
+            <param name="tbTmp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.RegexInputTextAll(System.Web.UI.WebControls.TextBox,System.String[])">
+            <summary>
+            非空+其它验证
+            </summary>
+            <param name="tbTmp"></param>
+            <param name="strRegex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.RegexInputTextOnly(System.Web.UI.WebControls.TextBox,System.String[])">
+            <summary>
+            其它验证
+            </summary>
+            <param name="tbTmp"></param>
+            <param name="strRegex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.RegexExe(System.Web.UI.WebControls.TextBox,System.String[])">
+            <summary>
+            验证TextBox中值是否符合验证要求
+            </summary>
+            <param name="tbTmp"></param>
+            <param name="strRegex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.Error(System.Web.UI.WebControls.TextBox,System.String)">
+            <summary>
+            加载验证失败样式
+            </summary>
+            <param name="tbTmp"></param>
+            <param name="err"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Portal.Framework.FWRegex.Right(System.Web.UI.WebControls.TextBox)">
+            <summary>
+            加载验证正确样式
+            </summary>
+            <param name="tbTmp"></param>
+        </member>
+        <member name="T:Portal.Framework.FWLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.FWLog.LogSave(System.String,System.String)">
+            <summary>
+            保存日常操作日志
+            </summary>
+            <param name="path"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:Portal.Framework.FWLog.ExSave(System.String,System.String)">
+            <summary>
+            保存异常操作日志
+            </summary>
+            <param name="path"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:Portal.Framework.FWLog.SaveLog(System.String,System.String,System.String)">
+            <summary>
+            日志信息保存
+            </summary>
+            <param name="path"></param>
+            <param name="file"></param>
+            <param name="note"></param>
+        </member>
+        <member name="F:Portal.Framework.UserInit._FWUserID">
+            <summary>
+            账号ID
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.UserInit._FWUserName">
+            <summary>
+            账号Name
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.UserInit._FWLoginName">
+            <summary>
+            账号Name
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.UserInit._FWUserPwd">
+            <summary>
+            账号Pwd
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.UserInit._FWIsLogin">
+            <summary>
+            账号Name
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.UserInit.CookieName">
+            <summary>
+            Cookie名
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.UserInit._FWPowerIndex">
+            <summary>
+            权限序号
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.UserInit.#ctor">
+            <summary>
+            实例化
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.UserInit.OnPreInit(System.EventArgs)">
+            <summary>
+            自动加载
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Portal.Framework.UserInit.cookie">
+            <summary>
+            Cookie权限验证
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.UserInit.ExePow(System.String)">
+            <summary>
+            执行权限验证
+            </summary>
+            <param name="value">登录信息表ID</param>
+        </member>
+        <member name="M:Portal.Framework.UserInit.GetCookieAndSessionValue(System.String)">
+            <summary>
+            从CookieAndSession获取值
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Portal.Framework.UserInit.ErrorOut">
+            <summary>
+            运行出错，框架页跳转登录页
+            </summary>
+        </member>
+        <member name="M:Portal.Framework.UserInit.AspPageUrl">
+            <summary>
+            获取页名
+            </summary>
+            <returns>页名</returns>
+        </member>
+        <member name="T:Portal.Framework.FWConfig">
+            <summary>
+            配置页
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig.LogPath">
+            <summary>
+            日志目录
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig.MaxImg">
+            <summary>
+            上传图片最大限制
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig.ImgPath">
+            <summary>
+            上传图片存储目录
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewAddData">
+            <summary>
+            添加提示
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewAddDataError">
+            <summary>
+            添加提示
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewUpdateData">
+            <summary>
+            修改提示
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewUpdateDataError">
+            <summary>
+            修改提示
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewDelData">
+            <summary>
+            删除提示
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewDelDataError">
+            <summary>
+            删除提示
+            </summary>
+        </member>
+        <member name="F:Portal.Framework.FWConfig._FWClewLoginDataError">
+            <summary>
+            账号已存在
+            </summary>
+        </member>
+    </members>
+</doc>

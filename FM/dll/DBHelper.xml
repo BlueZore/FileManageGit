@@ -1,0 +1,445 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DBHelper</name>
+    </assembly>
+    <members>
+        <member name="T:DBHelper.ORACLE.FWDB">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="F:DBHelper.ORACLE.FWDB.sqlcon">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.#ctor">
+            <summary>
+            初始化数据库连接
+            </summary>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.Add(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            对SQL数据添加
+            </summary>
+            <param name="dp">SQL相关参数</param>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.Update(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            对SQL数据修改，支持SQL参数化使用，适用于条件性语句，valParmes传参，如为null代表无参，href转页，如为null代表不转页，page对话框弹出，如为null代表无对话框弹出
+            </summary>
+            <param name="dp"></param>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.Delete(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            对SQL数据删除，支持SQL参数化使用，适用于条件性语句，valParmes传参，如为null代表无参，href转页，如为null代表不转页，page对话框弹出，如为null代表无对话框弹出
+            </summary>
+            <param name="dp"></param>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.Query(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            对SQL数据添加/修改/删除操作，支持异常日志
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.Scalar(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列，忽略其他列或行，参数类型SQL，valParmes为Null时是无参纯SQL语句
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.DataSet(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            获取SQL数据列表，支持SQL参数化使用，适用于条件性语句，支持异常日志，valParmes传参，如为null代表无参
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.StoredProcedure(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            使用SQL存储过程获取信息,可以使用valParmes进行传参，如为null代表无参，支持int,varchar,datetime(注：编写存储过程时最好有返回值，可以通过返回值判断是否成功）
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.RetStoredProcedure(DBHelper.ORACLE.FWParameter)">
+            <summary>
+            使用SQL存储过程获取返回值
+            </summary>
+            <param name="dp">SQL参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.DataSetRegex(System.Data.DataSet,System.Int32)">
+            <summary>
+            DataSet验证
+            </summary>
+            <param name="ds"></param>
+            <param name="TableNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            对SQL数据添加/修改/删除操作，参数类型SQL，valParmes为Null时是无参纯SQL语句
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.ExecuteScalar(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列，忽略其他列或行，参数类型SQL，valParmes为Null时是无参纯SQL语句
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.DataSet(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            获取SQL数据列表
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.StoredProcedureSQL(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            使用SQL存储过程获取信息,可以使用valParmes进行传参，如为null代表无参，支持int,varchar,datetime(注：编写存储过程时最好有返回值，可以通过返回值判断是否成功）
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.StoredProcedure(System.String,System.Collections.Generic.List{System.String[]},System.Collections.ArrayList)">
+            <summary>
+            使用SQL存储过程获取回返值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="valParmes">参数</param>
+            <param name="retParmes">返回参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.AddParams(System.Data.OracleClient.OracleCommand,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            拆解valParmes，添加存储过程参数值
+            </summary>
+            <param name="cmd"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.TransformParameter(System.String[])">
+            <summary>
+            拆解valStr，转换成满足存储过程的SqlParameter（0全球唯一标识，1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="valParmes_"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWDB.valDbType(System.String)">
+            <summary>
+            参数类型匹配（1整形，2时间，3文字字符串，4字符串，5单精度浮点型）
+            </summary>
+            <param name="sqldbtype">（1整形，2时间，3文字字符串，4字符串，5单精度浮点型）</param>
+            <returns></returns>
+        </member>
+        <member name="T:DBHelper.FWConfig">
+            <summary>
+            配置页
+            </summary>
+        </member>
+        <member name="F:DBHelper.FWConfig.LogPath">
+            <summary>
+            日志目录
+            </summary>
+        </member>
+        <member name="T:DBHelper.SQL.FWDB">
+            <summary>
+            数据访问核心
+            </summary>
+        </member>
+        <member name="F:DBHelper.SQL.FWDB.sqlcon">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.#ctor">
+            <summary>
+            初始化数据库连接
+            </summary>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.#ctor(System.String)">
+            <summary>
+            初始化数据库连接
+            </summary>
+            <param name="sqlcon"></param>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.Add(DBHelper.SQL.FWParameter)">
+            <summary>
+            对SQL数据添加
+            </summary>
+            <param name="dp">SQL相关参数</param>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.Update(DBHelper.SQL.FWParameter)">
+            <summary>
+            对SQL数据修改，支持SQL参数化使用，适用于条件性语句，valParmes传参，如为null代表无参，href转页，如为null代表不转页，page对话框弹出，如为null代表无对话框弹出
+            </summary>
+            <param name="dp"></param>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.Delete(DBHelper.SQL.FWParameter)">
+            <summary>
+            对SQL数据删除，支持SQL参数化使用，适用于条件性语句，valParmes传参，如为null代表无参，href转页，如为null代表不转页，page对话框弹出，如为null代表无对话框弹出
+            </summary>
+            <param name="dp"></param>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.Query(DBHelper.SQL.FWParameter)">
+            <summary>
+            对SQL数据添加/修改/删除操作，支持异常日志
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.Scalar(DBHelper.SQL.FWParameter)">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列，忽略其他列或行，参数类型SQL，valParmes为Null时是无参纯SQL语句
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.DataSet(DBHelper.SQL.FWParameter)">
+            <summary>
+            获取SQL数据列表，支持SQL参数化使用，适用于条件性语句，支持异常日志，valParmes传参，如为null代表无参
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.StoredProcedure(DBHelper.SQL.FWParameter)">
+            <summary>
+            使用SQL存储过程获取信息,可以使用valParmes进行传参，如为null代表无参，支持int,varchar,datetime(注：编写存储过程时最好有返回值，可以通过返回值判断是否成功）
+            </summary>
+            <param name="dp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.RetStoredProcedure(DBHelper.SQL.FWParameter)">
+            <summary>
+            使用SQL存储过程获取返回值
+            </summary>
+            <param name="dp">SQL参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.DataSetRegex(System.Data.DataSet,System.Int32)">
+            <summary>
+            DataSet验证
+            </summary>
+            <param name="ds"></param>
+            <param name="TableNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            对SQL数据添加/修改/删除操作，参数类型SQL，valParmes为Null时是无参纯SQL语句
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.ExecuteScalar(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列，忽略其他列或行，参数类型SQL，valParmes为Null时是无参纯SQL语句
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.DataSet(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            获取SQL数据列表
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.StoredProcedure(System.String,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            使用SQL存储过程获取信息,可以使用valParmes进行传参，如为null代表无参，支持int,varchar,datetime(注：编写存储过程时最好有返回值，可以通过返回值判断是否成功）
+            </summary>
+            <param name="sql"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.StoredProcedure(System.String,System.Collections.Generic.List{System.String[]},System.Collections.ArrayList)">
+            <summary>
+            使用SQL存储过程获取回返值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="valParmes">参数</param>
+            <param name="retParmes">返回参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.AddParams(System.Data.SqlClient.SqlCommand,System.Collections.Generic.List{System.String[]})">
+            <summary>
+            拆解valParmes，添加存储过程参数值
+            </summary>
+            <param name="cmd"></param>
+            <param name="valParmes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.TransformParameter(System.String[])">
+            <summary>
+            拆解valStr，转换成满足存储过程的SqlParameter（0全球唯一标识，1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="valParmes_"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DBHelper.SQL.FWDB.valDbType(System.String)">
+            <summary>
+            参数类型匹配（0全球唯一标识，1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="sqldbtype">（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）</param>
+            <returns></returns>
+        </member>
+        <member name="T:DBHelper.FWLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DBHelper.FWLog.LogSave(System.String,System.String)">
+            <summary>
+            保存日常操作日志
+            </summary>
+            <param name="path"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:DBHelper.FWLog.ExSave(System.String,System.String)">
+            <summary>
+            保存异常操作日志
+            </summary>
+            <param name="path"></param>
+            <param name="note"></param>
+        </member>
+        <member name="M:DBHelper.FWLog.SaveLog(System.String,System.String,System.String)">
+            <summary>
+            日志信息保存
+            </summary>
+            <param name="path"></param>
+            <param name="file"></param>
+            <param name="note"></param>
+        </member>
+        <member name="T:DBHelper.SQL.FWParameter">
+            <summary>
+            数据参数
+            </summary>
+        </member>
+        <member name="M:DBHelper.SQL.FWParameter.#ctor">
+            <summary>
+            参数方法实例化(SQL语名和SQL参数)
+            </summary>
+        </member>
+        <member name="M:DBHelper.SQL.FWParameter.Add(System.String,System.String,System.Int32)">
+            <summary>
+            添加SQL参数值 type:（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="Field">SQL变量</param>
+            <param name="Parameter">参数</param>
+            <param name="Type">参数类型（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）</param>
+        </member>
+        <member name="M:DBHelper.SQL.FWParameter.Add(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            添加SQL参数值（输出、返回应用）type:（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="Direction">输出、返回</param>
+            <param name="Field">参数名</param>
+            <param name="Type">参数类型（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）</param>
+            <param name="Lenght">参数长度</param>
+        </member>
+        <member name="M:DBHelper.SQL.FWParameter.Add(System.String)">
+            <summary>
+            SQL语句追加
+            </summary>
+            <param name="sqlParmes_"></param>
+        </member>
+        <member name="M:DBHelper.SQL.FWParameter.Clear">
+            <summary>
+            参数信息清空
+            </summary>
+        </member>
+        <member name="P:DBHelper.SQL.FWParameter.valParmes">
+            <summary>
+            获取SQL参数集
+            </summary>
+        </member>
+        <member name="P:DBHelper.SQL.FWParameter.retParmest">
+            <summary>
+            获取SQL返回参数
+            </summary>
+        </member>
+        <member name="P:DBHelper.SQL.FWParameter.sqlParmes">
+            <summary>
+            获取SQL语句字符串
+            </summary>
+        </member>
+        <member name="P:DBHelper.SQL.FWParameter.GetListSqlParmes">
+            <summary>
+            修改SQL分页语句
+            </summary>
+        </member>
+        <member name="T:DBHelper.ORACLE.FWParameter">
+            <summary>
+            数据参数
+            </summary>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWParameter.#ctor">
+            <summary>
+            参数方法实例化(SQL语名和SQL参数)
+            </summary>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWParameter.Add(System.String,System.String,System.Int32)">
+            <summary>
+            添加SQL参数值 type:（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="Field">SQL变量</param>
+            <param name="Parameter">参数</param>
+            <param name="Type">参数类型（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）</param>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWParameter.Add(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            添加SQL参数值（输出、返回应用）type:（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）
+            </summary>
+            <param name="Direction">输出、返回</param>
+            <param name="Field">参数名</param>
+            <param name="Type">参数类型（1整形，2时间，3文字字符串，4字符串，5单精度浮点型，6金额）</param>
+            <param name="Lenght">参数长度</param>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWParameter.Add(System.String)">
+            <summary>
+            SQL语句追加
+            </summary>
+            <param name="sqlParmes_"></param>
+        </member>
+        <member name="M:DBHelper.ORACLE.FWParameter.Clear">
+            <summary>
+            参数信息清空
+            </summary>
+        </member>
+        <member name="P:DBHelper.ORACLE.FWParameter.valParmes">
+            <summary>
+            获取SQL参数集
+            </summary>
+        </member>
+        <member name="P:DBHelper.ORACLE.FWParameter.retParmest">
+            <summary>
+            获取SQL返回参数
+            </summary>
+        </member>
+        <member name="P:DBHelper.ORACLE.FWParameter.sqlParmes">
+            <summary>
+            获取SQL语句字符串
+            </summary>
+        </member>
+        <member name="P:DBHelper.ORACLE.FWParameter.GetListSqlParmes">
+            <summary>
+            修改SQL分页语句
+            </summary>
+        </member>
+    </members>
+</doc>

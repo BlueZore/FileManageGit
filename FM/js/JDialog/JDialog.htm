@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #4a8ff7;
+            font-family: Microsoft YaHei;
+            font-size: 14px;
+            color: White;
+        }
+
+        .dome1 {
+            width: 100%;
+            height: 300px;
+        }
+
+            .dome1 button {
+                width: 350px;
+                height: 30px;
+                margin-top: 100px;
+                margin-left: 100px;
+            }
+
+        .dome2 {
+            width: 100%;
+            height: 300px;
+        }
+
+            .dome2 tr td {
+                width: 100%;
+                padding-left: 30px;
+                height: 35px;
+            }
+
+                .dome2 tr td p {
+                    margin-left: 20px;
+                    width: 800px;
+                    height: 20px;
+                    float: left;
+                }
+    </style>
+
+    <link href="JDialogCss.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-1.4.1.js" type="text/javascript"></script>
+    <script src="Jquery_Fn_Dialog.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            function test(val) {
+                alert(val[1]);
+            }
+
+            $("button").bind("click", function (event) {
+                var arr = new Array;
+                arr[0] = 1;
+                arr[1] = 2;
+
+                $(this).JDialog({
+                    width: 800,
+                    height: 400,
+                    confirm: true,
+                    html: "<br/><p style='margin-left:50px'>姓名：<input type='text' /></p><p style='margin-left:150px'><input id='asd' type='button' value='确定' /></p>",
+                    buttonClick: test,
+                    buttonClickVal: arr
+                });
+
+                $("#asd").click(function () {
+                    alert($("[type='text']").val());
+                });
+            });
+
+
+            $(".dome2 p:eq(0)").click(function () {
+                $(this).JDialog({
+                    confirm: true,
+                    text: "能力有限，有些许问题不能妥善的解决",
+                    tooltitle: "能力有限，有些许问题",
+                    isAClose: false
+                });
+            });
+
+            $(".dome2 p:eq(1)").click(function () {
+                $(this).JDialog({
+                    text: "能力有限，有些许问题不能妥善的解决"
+                });
+            });
+
+            $(".dome2 p:eq(2)").click(function () {
+                $(this).JDialog({
+                    confirm: true,
+                    text: "能力有限，有些许问题不能妥善的解决",
+                    buttonClick: test,
+                    buttonClickVal: 1
+                });
+            });
+
+            $(".dome2 p:eq(3)").click(function () {
+                $(this).JDialog({
+                    text: "能力有限，有些许问题不能妥善的解决",
+                    topShow: "hidden",
+                    bottomShow: "hidden"
+                });
+            });
+
+            $(".dome2 p:eq(4)").click(function () {
+                $(this).JDialog({
+                    text: "能力有限，有些许问题不能妥善的解决",
+                    opacityShow: "hidden"
+                });
+            });
+
+            $(".dome2 p:eq(5)").click(function () {
+                $(this).JDialog({
+                    text: "能力有限，有些许问题不能妥善的解决",
+                    animate: "fade"
+                });
+            });
+
+            $(".dome2 p:eq(6)").click(function () {
+                $(this).JDialog({
+                    html: "<br/><p style='margin-left:50px'>姓名：<input type='text' /></p><p style='margin-left:150px'><input class=\"JDialog_MainLayer_Main_Middle_Button\" type='button' value='确定' /></p>",
+                    animate: "fade",
+                    bottomShow: "hidden",
+                    move: true
+                });
+                $(".JDialog_MainLayer_Main_Middle_Button").click(function () {
+                    $(this).JDialogClose();
+                    alert("");
+                });
+            });
+
+            $(".dome2 p:eq(7)").bind("click", function (event) {
+
+                $(this).JDialog({
+                    width: 800,
+                    height: 400,
+                    confirm: true,
+                    html: "<iframe src='Detail.aspx' scrolling='no' width='100%'  frameborder=\"no\" scrolling=\"auto\" height=\"100%\"></iframe>",
+                    closeReLoad: true,
+                    bottomShow: "hidden"
+                });
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+
+    <!--<div class="JDialog_OpacityLayer">
+
+</div>
+<div class="JDialog_MainLayer">
+<div class="JDialog_MainLayer_Shadow"></div>
+<div class="JDialog_MainLayer_Main">
+<div class="JDialog_MainLayer_Main_Top"><a href="#">关闭</a></div>
+<div class="JDialog_MainLayer_Main_Middle"></div>
+<div class="JDialog_MainLayer_Main_Botton"><button>OK</button></div>
+
+</div>
+</div>-->
+    <div class="dome1">
+        <button>用Html自己定义对话框</button>
+    </div>
+    <table class="dome2" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td>
+                <p>显示自己定义内容对话框</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>显示是否对话框</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>显示是否对话框，自定事件</p>
+                <select id="Select1">
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>只显示内容</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>隐藏透明层</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>动画对话框</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>自定义Html按钮</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Iframe按钮(子页Text要获取焦点，要不焦点丢失)</p>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+</body>
+</html>
