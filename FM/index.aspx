@@ -179,12 +179,11 @@
         }
 
         .fm_main_menu {
-            height: 125px;
+            height: 130px;
             width: 100px;
             border-top: #d2d2d2 1px solid;
             border-left: #d2d2d2 1px solid;
             border-right: #d2d2d2 1px solid;
-            background-color: #fff;
             font-size: 12px;
             position: absolute;
             display: none;
@@ -194,6 +193,8 @@
             .fm_main_menu li {
                 list-style: none;
                 border-bottom: #d2d2d2 1px solid;
+                background-color: #fff;
+                height: 25px;
             }
 
                 .fm_main_menu li a {
@@ -201,7 +202,8 @@
                     text-decoration: none;
                     display: inline-block;
                     padding-left: 25px;
-                    padding-top: 6px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
                     height: 18px;
                     width: 75px;
                 }
@@ -226,11 +228,12 @@
         var addOrUpdate = 0;
         //文件夹名
         var fileName = "";
+        //1复制，2移动
+        var copyOrMove = 0;
 
         $(function () {
 
             getFiles($("#hidParentID").val());
-            filesTreeShow();
 
             //LI文件夹层移入移出
             $(".fm_main_file_area li").live("mouseover", function () {
@@ -347,16 +350,16 @@
 
             //复制
             $(".fm_main_menu a:eq(1)").bind("click", function () {
-                var index = li_selected.substring(0, li_selected.length - 1).substring(1);
-                var $li = $(".fm_main_file_area li:eq(" + index + ")");
-
+                copyOrMove = 1;
+                filesDialogShow();
+                $(".fm_main_menu").hide();
             });
 
             //移动
             $(".fm_main_menu a:eq(2)").bind("click", function () {
-                var index = li_selected.substring(0, li_selected.length - 1).substring(1);
-                var $li = $(".fm_main_file_area li:eq(" + index + ")");
-
+                copyOrMove = 2;
+                filesDialogShow();
+                $(".fm_main_menu").hide();
             });
 
             //重命名
@@ -487,27 +490,25 @@
             });
         }
 
+        //显示弹出窗口
+        function filesDialogShow() {
+            var html = "";
+            html += "<div class=\"zTreeDemoBackground left\" >";
+            html += "    <ul id=\"treeDemo\" class=\"ztree\" >";
+            html += "    </ul>";
+            html += "</div>";
+            $(document).JDialog({
+                confirm: true,
+                width: 408,
+                height: 340,
+                html: html,
+                buttonClick: filesTreeClick
+            });
+            filesTreeShow();
+        }
 
-        var setting = {
-            view: {
-                showLine: false,
-                showIcon: false,
-                selectedMulti: false,
-                dblClickExpand: false,
-                addDiyDom: addDiyDom
-            },
-            data: {
-                simpleData: {
-                    enable: true
-                }
-            },
-            callback: {
-                beforeClick: beforeClick
-            }
-        };
-
+        //显示文件夹树
         function filesTreeShow() {
-
             $.ajax({
                 type: "post",
                 contentType: "application/json",
@@ -519,11 +520,30 @@
                 },
                 //timeout: 1000, // 设置请求超时时间
                 success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
-
-                    var treeObj = $("#treeDemo"); alert(data.d);
+                    var setting = {
+                        data: {
+                            simpleData: {
+                                enable: true
+                            }
+                        }
+                    };
+                    var treeObj = $("#treeDemo");
                     $.fn.zTree.init(treeObj, setting, eval(data.d));
                 }
             });
+        }
+
+        function filesTreeClick() {
+            var index = li_selected.substring(0, li_selected.length - 1).substring(1);
+            var $li = $(".fm_main_file_area li:eq(" + index + ")");
+            switch(copyOrMove)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+            copyOrMove = 0;
         }
 
         //DIV层替换
@@ -537,11 +557,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
-        <div class="zTreeDemoBackground left" style="margin-top: -10px; width: 179px; height: 100px;">
-            <ul id="treeDemo" class="ztree" style="width: 100%; overflow-y: auto; height: 100%;">
-            </ul>
-        </div>
 
         <ul class="fm_main_menu">
             <li><a>打开</a></li>
