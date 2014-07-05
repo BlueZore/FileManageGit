@@ -27,10 +27,15 @@ namespace WebApplication2
         [WebMethod]
         public int CreateFile(string FileID, string FileName, string FileParentID)
         {
+            var v = db.OS_Files.Where(p => p.ID == new Guid(FileParentID));
             OS_Files model = new OS_Files();
             model.ID = new Guid(FileID);
             model.Name = FileName;
             model.ParentID = new Guid(FileParentID);
+            model.ParentIDs =
+                v.Count() > 0 ?
+                (v.First().ParentIDs + FileParentID + "|") :
+                ("|" + FileParentID + "|");
             model.ModifiedDate = model.CreatedDate = DateTime.Now;
             db.OS_Files.Add(model);
             return db.SaveChanges();
@@ -85,6 +90,7 @@ namespace WebApplication2
             var v = db.OS_Files.Where(p => p.ID == new Guid(FileID));
             if (v.Count() > 0)
             {
+                v.First().ParentIDs = v.First().ParentIDs.Replace("|" + v.First().ParentID.ToString() + "|", "|" + FileParentID + "|");
                 v.First().ParentID = new Guid(FileParentID);
                 db.SaveChanges();
                 return 1;
@@ -101,7 +107,9 @@ namespace WebApplication2
         [WebMethod]
         public int CopyFile(string FileID, string FileParentID)
         {
-            var v = db.OS_Files.Where(p => p.ID == new Guid(FileID));
+            var v = from p in db.OS_Files
+                    where p.ID == new Guid(FileID) || p.ParentIDs.IndexOf("|" + FileID + "|") > -1
+                    select p;
             if (v.Count() > 0)
             {
                 OS_Files model = new OS_Files();
@@ -136,15 +144,10 @@ namespace WebApplication2
         public string GetAllFilesForTree()
         {
             var v = db.OS_Files.OrderByDescending(p => p.CreatedDate);
-            string JSON = "";
+            string JSON = "{ id: \"00000000-0000-0000-0000-000000000000\", pId: \"0\", name: \"全部文件\", open: true }";
             foreach (var _v in v)
             {
                 JSON += ",{ id: \"" + _v.ID + "\", pId: \"" + _v.ParentID + "\", name: \"" + _v.Name + "\" }";
-            }
-
-            if (JSON.Length > 0)
-            {
-                JSON = JSON.Substring(1);
             }
 
             return "[" + JSON + "]";

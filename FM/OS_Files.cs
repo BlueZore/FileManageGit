@@ -19,5 +19,6 @@ namespace WebApplication2
         public Nullable<System.Guid> ParentID { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string ParentIDs { get; set; }
     }
 }

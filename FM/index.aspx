@@ -12,6 +12,19 @@
             padding: 0px;
         }
 
+        .fm_main_alert {
+            width: 269px;
+            background-color: #ba8e35;
+            color: #fff;
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+            margin: 30px 45%;
+            position: absolute;
+            text-align: center;
+            display: none;
+        }
+
         .fm_main_top {
             background: url("/images/outer_bn2_8960d8f.gif") repeat-x scroll left -53px #f7f7f7;
             border-bottom: 1px solid #d2d2d2;
@@ -230,6 +243,8 @@
         var fileName = "";
         //1复制，2移动
         var copyOrMove = 0;
+        //选中树节点ID
+        var treeNodeID_selected = "";
 
         $(function () {
 
@@ -490,6 +505,57 @@
             });
         }
 
+        //复制文件夹集
+        function CopyFile(fileID) {
+            var html = "";
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/WebService.asmx/CopyFile",
+                data: "{FileID:'" + fileID + "'}",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(XMLHttpRequest);
+                },
+                //timeout: 1000, // 设置请求超时时间
+                success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
+                    if (data.d == 1) {
+                        $("[fid='" + fileID + "']").remove();
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            });
+        }
+
+        //移动文件夹集
+        function MoveFile(fileID, fileParentID) {
+            var html = "";
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/WebService.asmx/MoveFile",
+                data: "{FileID:'" + fileID + "',FileParentID:'" + fileParentID + "'}",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(XMLHttpRequest);
+                },
+                //timeout: 1000, // 设置请求超时时间
+                success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
+                    if (data.d == 1) {
+                        $("[fid='" + fileID + "']").remove();
+                        SysAlert("完成移动")
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            });
+        }
+
         //显示弹出窗口
         function filesDialogShow() {
             var html = "";
@@ -507,6 +573,17 @@
             filesTreeShow();
         }
 
+        var setting = {
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                onClick: zTreeOnClick
+            }
+        };
+
         //显示文件夹树
         function filesTreeShow() {
             $.ajax({
@@ -520,30 +597,30 @@
                 },
                 //timeout: 1000, // 设置请求超时时间
                 success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
-                    var setting = {
-                        data: {
-                            simpleData: {
-                                enable: true
-                            }
-                        }
-                    };
+                    //树绑定     
                     var treeObj = $("#treeDemo");
                     $.fn.zTree.init(treeObj, setting, eval(data.d));
+                    
                 }
             });
+        }
+
+        function zTreeOnClick(event, treeId, treeNode) {
+            treeNodeID_selected = treeNode.id;
         }
 
         function filesTreeClick() {
             var index = li_selected.substring(0, li_selected.length - 1).substring(1);
             var $li = $(".fm_main_file_area li:eq(" + index + ")");
-            switch(copyOrMove)
-            {
+            switch (copyOrMove) {
                 case 1:
                     break;
                 case 2:
+                    MoveFile($li.attr("fid"), treeNodeID_selected);
                     break;
             }
             copyOrMove = 0;
+            $(document).JDialogClose();
         }
 
         //DIV层替换
@@ -552,7 +629,11 @@
             $(".fm_main_file_area_li_div3").replaceWith("<div class=\"fm_main_file_area_li_div2\">" + fileName + "</div>");
         }
 
-
+        function SysAlert(meg) {
+            $(".fm_main_alert").html(meg).fadeIn("slow", function () {
+                $(this).fadeOut("slow");
+            });
+        }
     </script>
 </head>
 <body>
@@ -567,6 +648,10 @@
         </ul>
 
         <asp:HiddenField ID="hidParentID" runat="server" Value="00000000-0000-0000-0000-000000000000" />
+
+        <div class="fm_main_alert">
+            离线文件因含有违规内容被系统屏蔽无法下载
+        </div>
 
         <div class="fm_main_top">
             <div class="fm_main_top_left">
