@@ -20,5 +20,7 @@ namespace WebApplication2
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ParentIDs { get; set; }
+        public string Type { get; set; }
+        public Nullable<int> state { get; set; }
     }
 }

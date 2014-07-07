@@ -36,6 +36,7 @@ namespace WebApplication2
                 v.Count() > 0 ?
                 (v.First().ParentIDs + FileParentID + "|") :
                 ("|" + FileParentID + "|");
+            model.state = 0;
             model.ModifiedDate = model.CreatedDate = DateTime.Now;
             db.OS_Files.Add(model);
             return db.SaveChanges();
@@ -61,25 +62,25 @@ namespace WebApplication2
         }
 
         /// <summary>
-        /// 删除文件夹
+        /// 删除文件夹集（节点下都能删除）
         /// </summary>
         /// <param name="FileID">文件夹ID</param>
         /// <returns></returns>
         [WebMethod]
         public int DeleteFile(string FileID)
         {
-            var v = db.OS_Files.Where(p => p.ID == new Guid(FileID));
-            if (v.Count() > 0)
-            {
-                db.OS_Files.Remove(v.First());
-                db.SaveChanges();
-                return 1;
-            }
-            return 0;
+            var v = from p in db.OS_Files
+                    where p.ID == new Guid(FileID) ||
+                    p.ParentIDs.IndexOf(FileID) > -1
+                    select p;
+
+            db.OS_Files.RemoveRange(v);
+            db.SaveChanges();
+            return 1;
         }
 
         /// <summary>
-        /// 移动文件夹
+        /// 移动文件夹集
         /// </summary>
         /// <param name="FileID">文件夹ID</param>
         /// <param name="FileParentID">移动到的上级文件夹ID</param>
@@ -99,7 +100,7 @@ namespace WebApplication2
         }
 
         /// <summary>
-        /// 复制文件夹
+        /// 复制文件夹集
         /// </summary>
         /// <param name="FileID">文件夹ID</param>
         /// <param name="FileParentID">复制到的上级文件夹ID</param>
@@ -108,7 +109,7 @@ namespace WebApplication2
         public int CopyFile(string FileID, string FileParentID)
         {
             var v = from p in db.OS_Files
-                    where p.ID == new Guid(FileID) || p.ParentIDs.IndexOf("|" + FileID + "|") > -1
+                    where p.ID == new Guid(FileID) || p.ParentIDs.IndexOf("|" + FileID + "|") > -1 || p.ID == new Guid(FileParentID)
                     select p;
             if (v.Count() > 0)
             {
@@ -116,18 +117,27 @@ namespace WebApplication2
                 OS_Files model = new OS_Files();
                 model.ID = Guid.NewGuid();
                 model.Name = _v.First().Name;
-                model.ParentID = _v.First().ParentID;
-                model.ParentIDs = _v.First().ParentIDs;
+                model.ParentID = new Guid(FileParentID);
+                model.ParentIDs = v.Where(p => p.ID == new Guid(FileParentID)).First().ParentIDs + FileParentID + "|";
+                model.state = 0;
                 model.ModifiedDate = model.CreatedDate = DateTime.Now;
-                new FileManageEntities().OS_Files.Add(model);
-                ForeachCopyFile(v.ToList(), FileID, model.ID.ToString());
+                db.OS_Files.Add(model);
+                ForeachCopyFile(v.ToList(), FileID, model.ID.ToString(), v.First().ParentIDs, model.ParentIDs);
                 db.SaveChanges();
                 return 1;
             }
             return 0;
         }
 
-        void ForeachCopyFile(List<OS_Files> list, string FileID, string newFileID)
+        /// <summary>
+        /// 递归复制文件夹集
+        /// </summary>
+        /// <param name="list">集合</param>
+        /// <param name="FileID">老文件夹ID</param>
+        /// <param name="newFileID">新文件夹ID</param>
+        /// <param name="oldParentIDs">老文件夹父级IDs</param>
+        /// <param name="newParentIDs">新文件夹父级IDs</param>
+        void ForeachCopyFile(List<OS_Files> list, string FileID, string newFileID, string oldParentIDs, string newParentIDs)
         {
             var v = list.Where(p => p.ParentID == new Guid(FileID));
             foreach (var _v in v)
@@ -135,11 +145,12 @@ namespace WebApplication2
                 OS_Files model = new OS_Files();
                 model.ID = Guid.NewGuid();
                 model.Name = _v.Name;
-                model.ParentID = _v.ParentID;
-                model.ParentIDs = _v.ParentIDs.Replace("|" + FileID + "|", "|" + newFileID + "|");
+                model.ParentID = new Guid(newFileID);
+                model.ParentIDs = _v.ParentIDs.Replace(oldParentIDs, newParentIDs) + newFileID + "|";
+                model.state = 0;
                 model.ModifiedDate = model.CreatedDate = DateTime.Now;
-                new FileManageEntities().OS_Files.Add(model);
-                ForeachCopyFile(list, _v.ID.ToString(), model.ID.ToString());
+                db.OS_Files.Add(model);
+                ForeachCopyFile(list, _v.ID.ToString(), model.ID.ToString(), _v.ParentIDs, model.ParentIDs);
             }
         }
 
@@ -170,6 +181,32 @@ namespace WebApplication2
             }
 
             return "[" + JSON + "]";
+        }
+
+        /// <summary>
+        /// 添加应用程序
+        /// </summary>
+        /// <param name="FileName">文件夹名</param>
+        /// <param name="FileParentID">上级文件夹ID</param>
+        /// <param name="AppType">应用程序类型</param>
+        /// <returns></returns>
+        [WebMethod]
+        public int CreateApp(string FileID, string FileName, string FileParentID,string AppType)
+        {
+            var v = db.OS_Files.Where(p => p.ID == new Guid(FileParentID));
+            OS_Files model = new OS_Files();
+            model.ID = new Guid(FileID);
+            model.Name = FileName;
+            model.ParentID = new Guid(FileParentID);
+            model.ParentIDs =
+                v.Count() > 0 ?
+                (v.First().ParentIDs + FileParentID + "|") :
+                ("|" + FileParentID + "|");
+            model.Type = AppType;
+            model.state = 1;
+            model.ModifiedDate = model.CreatedDate = DateTime.Now;
+            db.OS_Files.Add(model);
+            return db.SaveChanges();
         }
     }
 }

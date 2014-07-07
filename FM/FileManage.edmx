@@ -23,6 +23,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="ParentID" Type="uniqueidentifier" />
           <Property Name="ParentIDs" Type="varchar(max)" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
@@ -54,6 +56,8 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="ParentIDs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="Int32" />
         </EntityType>
         <EntityContainer Name="FileManageEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="OS_Directorys" EntityType="Self.OS_Directorys" />
@@ -79,6 +83,8 @@
           <EntitySetMapping Name="OS_Files">
             <EntityTypeMapping TypeName="FileManageModel.OS_Files">
               <MappingFragment StoreEntitySet="OS_Files">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="ParentIDs" ColumnName="ParentIDs" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
