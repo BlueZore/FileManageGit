@@ -506,13 +506,13 @@
         }
 
         //复制文件夹集
-        function CopyFile(fileID) {
+        function CopyFile(fileID, fileParentID) {
             var html = "";
             $.ajax({
                 type: "post",
                 contentType: "application/json",
                 url: "/WebService.asmx/CopyFile",
-                data: "{FileID:'" + fileID + "'}",
+                data: "{FileID:'" + fileID + "',FileParentID:'" + fileParentID + "'}",
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(XMLHttpRequest.status);
                     alert(XMLHttpRequest.readyState);
@@ -521,7 +521,7 @@
                 //timeout: 1000, // 设置请求超时时间
                 success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
                     if (data.d == 1) {
-                        $("[fid='" + fileID + "']").remove();
+                        SysAlert("完成复制")
                     }
                     else {
                         alert("Error");
@@ -614,6 +614,7 @@
             var $li = $(".fm_main_file_area li:eq(" + index + ")");
             switch (copyOrMove) {
                 case 1:
+                    CopyFile($li.attr("fid"), treeNodeID_selected);
                     break;
                 case 2:
                     MoveFile($li.attr("fid"), treeNodeID_selected);

@@ -112,16 +112,35 @@ namespace WebApplication2
                     select p;
             if (v.Count() > 0)
             {
+                var _v = v.Where(p => p.ID == new Guid(FileID));
                 OS_Files model = new OS_Files();
                 model.ID = Guid.NewGuid();
-                model.Name = v.First().Name;
-                model.ParentID = new Guid(FileParentID);
+                model.Name = _v.First().Name;
+                model.ParentID = _v.First().ParentID;
+                model.ParentIDs = _v.First().ParentIDs;
                 model.ModifiedDate = model.CreatedDate = DateTime.Now;
                 new FileManageEntities().OS_Files.Add(model);
+                ForeachCopyFile(v.ToList(), FileID, model.ID.ToString());
                 db.SaveChanges();
                 return 1;
             }
             return 0;
+        }
+
+        void ForeachCopyFile(List<OS_Files> list, string FileID, string newFileID)
+        {
+            var v = list.Where(p => p.ParentID == new Guid(FileID));
+            foreach (var _v in v)
+            {
+                OS_Files model = new OS_Files();
+                model.ID = Guid.NewGuid();
+                model.Name = _v.Name;
+                model.ParentID = _v.ParentID;
+                model.ParentIDs = _v.ParentIDs.Replace("|" + FileID + "|", "|" + newFileID + "|");
+                model.ModifiedDate = model.CreatedDate = DateTime.Now;
+                new FileManageEntities().OS_Files.Add(model);
+                ForeachCopyFile(list, _v.ID.ToString(), model.ID.ToString());
+            }
         }
 
         /// <summary>
