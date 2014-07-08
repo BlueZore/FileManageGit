@@ -16,14 +16,15 @@
             $("#file_upload").uploadify({
                 buttonText: '选择文件',
                 //flash
-                swf: "js/uploadify/uploadify.swf",
+                swf: "/js/uploadify/uploadify.swf",
                 //文件选择后的容器ID
                 queueID: 'uploadfileQueue',
-                uploader: 'UploadHandler.ashx',
+                uploader: '/UploadHandler.ashx',
                 multi: false,
                 fileTypeDesc: '支持的格式：',
-                fileTypeExts: '*.jpg;*.jpge;*.gif;*.png;*.docx;*.doc;*.rar',
+                fileTypeExts: '*.jpg;*.jpge;*.gif;*.png;*.docx;*.doc;*.rar;*.xlsx;*.xls;*.zip;*.txt;*.pdf',
                 removeTimeout: 10,
+                fileSizeLimit: '25600',
 
                 //返回一个错误，选择文件的时候触发
                 'onSelectError': function (file, errorCode, errorMsg) {
@@ -32,7 +33,7 @@
                             alert("上传的文件数量已经超出系统限制的" + $('#file_upload').uploadify('settings', 'queueSizeLimit') + "个文件！");
                             break;
                         case -110:
-                            alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "大小！");
+                            alert("文件 [" + file.name + "] 大小超出系统限制的" + $('#file_upload').uploadify('settings', 'fileSizeLimit') + "K大小！");
                             break;
                         case -120:
                             alert("文件 [" + file.name + "] 大小异常！");
