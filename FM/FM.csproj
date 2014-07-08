@@ -81,6 +81,12 @@
     <Content Include="js\JDialog\JDialog.htm" />
     <Content Include="js\JDialog\JDialogCss.css" />
     <Content Include="js\JDialog\Jquery_Fn_Dialog.js" />
+    <Content Include="js\uploadify\jquery-1.7.2.min.js" />
+    <Content Include="js\uploadify\jquery.uploadify.min.js" />
+    <Content Include="js\uploadify\cancel.png" />
+    <Content Include="js\uploadify\swfobject.js" />
+    <Content Include="js\uploadify\uploadify.css" />
+    <Content Include="js\uploadify\uploadify.swf" />
     <Content Include="js\ztree\demo.css" />
     <Content Include="js\ztree\img\diy\1_close.png" />
     <Content Include="js\ztree\img\diy\1_open.png" />
@@ -98,6 +104,7 @@
     <Content Include="js\ztree\img\zTreeStandard.png" />
     <Content Include="js\ztree\jquery.ztree.core-3.5.min.js" />
     <Content Include="js\ztree\zTreeStyle.css" />
+    <Content Include="uploadify.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebService.asmx" />
   </ItemGroup>
@@ -131,6 +138,16 @@
       <DependentUpon>FileManage.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="uploadify.aspx.cs">
+      <DependentUpon>uploadify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadify.aspx.designer.cs">
+      <DependentUpon>uploadify.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -155,6 +172,7 @@
       <LastGenOutput>FileManage.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="UploadHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
