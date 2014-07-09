@@ -72,8 +72,11 @@
     </Content>
     <Content Include="css\FM.css" />
     <Content Include="images\btn_icon.gif" />
+    <Content Include="images\btn_sprit.gif" />
     <Content Include="images\outer_bn2_8960d8f.gif" />
     <Content Include="images\spritenew-f.gif" />
+    <Content Include="images\sprite_n1_ccdf642.gif" />
+    <Content Include="images\upload.png" />
     <Content Include="index.aspx" />
     <Content Include="js\FM.js" />
     <Content Include="js\Guid.js" />
@@ -86,6 +89,7 @@
     <Content Include="js\uploadify\cancel.png" />
     <Content Include="js\uploadify\swfobject.js" />
     <Content Include="js\uploadify\uploadify.css" />
+    <Content Include="js\uploadify\uploadify.js" />
     <Content Include="js\uploadify\uploadify.swf" />
     <Content Include="js\ztree\demo.css" />
     <Content Include="js\ztree\img\diy\1_close.png" />

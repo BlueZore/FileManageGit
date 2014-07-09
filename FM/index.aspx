@@ -6,6 +6,17 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/Guid.js" type="text/javascript"></script>
+    <link href="/js/JDialog/JDialogCss.css" rel="stylesheet" />
+    <script src="/js/JDialog/Jquery_Fn_Dialog.js" type="text/javascript"></script>
+    <link href="js/ztree/zTreeStyle.css" rel="stylesheet" />
+    <link href="js/ztree/demo.css" rel="stylesheet" />
+    <script src="js/ztree/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
+    <script src="js/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+    <script src="js/uploadify/swfobject.js" type="text/javascript"></script>
+    <link href="js/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="js/uploadify/uploadify.js" type="text/javascript"></script>
     <style type="text/css">
         * {
             margin: 0px;
@@ -225,13 +236,7 @@
                         background-color: #e9e9e9;
                     }
     </style>
-    <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <script src="/js/Guid.js" type="text/javascript"></script>
-    <link href="/js/JDialog/JDialogCss.css" rel="stylesheet" />
-    <script src="/js/JDialog/Jquery_Fn_Dialog.js" type="text/javascript"></script>
-    <link href="js/ztree/zTreeStyle.css" rel="stylesheet" />
-    <link href="js/ztree/demo.css" rel="stylesheet" />
-    <script src="js/ztree/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
+
 
     <script type="text/javascript">
 
@@ -600,7 +605,7 @@
                     //树绑定     
                     var treeObj = $("#treeDemo");
                     $.fn.zTree.init(treeObj, setting, eval(data.d));
-                    
+
                 }
             });
         }
@@ -656,6 +661,8 @@
 
         <div class="fm_main_top">
             <div class="fm_main_top_left">
+                <div id="file_upload">
+                </div>
                 <a class="fm_main_top_left_a1">新建文件夹</a>
                 <a class="fm_main_top_left_a2"></a>
             </div>
