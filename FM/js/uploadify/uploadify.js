@@ -37,8 +37,28 @@
         },
         //上传到服务器成功时，服务器返回相应信息到data里
         onUploadSuccess: function (file, data, response) {
-            alert("");
+            //alert("");
+        },
+        //选择文件后向队列中添加每个上传任务时都会触发
+        onSelect: function (file) {
+            if ($(".fm_main_queue").is(":hidden")) {
+                $(".fm_main_queue,#uploadfileQueue").show();
+            }
         }
+    });
 
+    $(".fm_main_queue_head_min").click(function () {
+        $("#uploadfileQueue,.fm_main_queue_head_min").hide();
+        $(".fm_main_queue_head_max").show();
+    });
+
+    $(".fm_main_queue_head_max").click(function () {
+        $("#uploadfileQueue,.fm_main_queue_head_min").show();
+        $(this).hide();
+    });
+
+    $(".fm_main_queue_head_close").click(function () {
+        $(".fm_main_queue,#uploadfileQueue,.fm_main_queue_head_max").hide();
+        $(".fm_main_queue_head_min").show();
     });
 });

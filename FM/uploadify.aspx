@@ -50,38 +50,44 @@
                 },
                 //上传到服务器成功时，服务器返回相应信息到data里
                 onUploadSuccess: function (file, data, response) {
-                    alert("");
+                    //alert("");
+                },
+                //选择文件后向队列中添加每个上传任务时都会触发
+                onSelect: function (file) {
+                    if ($(".fm_main_queue").is(":hidden")) {
+                        $(".fm_main_queue,#uploadfileQueue").show();
+                    }
                 }
+            });
 
+            $(".fm_main_queue_head_min").click(function () {
+                $("#uploadfileQueue,.fm_main_queue_head_min").hide();
+                $(".fm_main_queue_head_max").show();
+            });
+
+            $(".fm_main_queue_head_max").click(function () {
+                $("#uploadfileQueue,.fm_main_queue_head_min").show();
+                $(this).hide();
+            });
+
+            $(".fm_main_queue_head_close").click(function () {
+                $(".fm_main_queue,#uploadfileQueue,.fm_main_queue_head_max").hide();
+                $(".fm_main_queue_head_min").show();
             });
         });
-
-        function doUplaod() {
-            $('#file_upload').uploadify('upload', '*');
-        }
-
-        function closeLoad() {
-            $('#file_upload').uploadify('cancel', '*');
-        }
     </script>
-    <style>
-        .fm_main_queue {
-        }
-
-        .fm_main_queue_head {
-            height: 39px;
-            line-height: 39px;
-            width: 372px;
-            background: url("/images/sprite_n1_ccdf642.gif") repeat-x scroll 0 0;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="fm_main_queue">
             <div class="fm_main_queue_head">
+                上传完成
+
+                <a class="fm_main_queue_head_close"></a>
+                <a class="fm_main_queue_head_max"></a>
+                <a class="fm_main_queue_head_min"></a>
             </div>
-            <div id="uploadfileQueue" style="padding: 3px;">
+            <div id="uploadfileQueue">
             </div>
         </div>
         <div id="file_upload">

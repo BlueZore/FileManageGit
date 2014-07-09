@@ -695,6 +695,17 @@
                 <div class="fm_main_file_area_li_div2">新建文件夹2</div>
             </li>--%>
         </ul>
+        <div class="fm_main_queue">
+            <div class="fm_main_queue_head">
+                上传完成
+
+                <a class="fm_main_queue_head_close"></a>
+                <a class="fm_main_queue_head_max"></a>
+                <a class="fm_main_queue_head_min"></a>
+            </div>
+            <div id="uploadfileQueue">
+            </div>
+        </div>
     </form>
 </body>
 </html>

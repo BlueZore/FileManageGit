@@ -71,6 +71,9 @@
       <DependentUpon>FileManage.mdf</DependentUpon>
     </Content>
     <Content Include="css\FM.css" />
+    <Content Include="images\aclose.png" />
+    <Content Include="images\amax.png" />
+    <Content Include="images\amin.png" />
     <Content Include="images\btn_icon.gif" />
     <Content Include="images\btn_sprit.gif" />
     <Content Include="images\outer_bn2_8960d8f.gif" />
@@ -177,6 +180,7 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="UploadHandler.ashx" />
+    <Content Include="js\uploadify\Uploadify 3.2 参数.docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
