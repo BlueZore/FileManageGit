@@ -270,7 +270,9 @@
             });
 
             $(".fm_main_file_area_li_div1").live("click", function () {
-                location.href = "index.aspx?file=" + $(this).parents("li").attr("fid");
+                if ($(this).parent().attr("state") == "0") {
+                    location.href = "index.aspx?file=" + $(this).parents("li").attr("fid");
+                }
             });
 
             //LI文件夹点击记录
@@ -446,16 +448,7 @@
                 //timeout: 1000, // 设置请求超时时间
                 success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
                     $.each(data.d, function (x, item) {
-                        html += "<li fid='" + item.ID + "' title=\"" + StringCurt(item.Name + "." + item.Type, 0) + "\" state=\"" + item.state + "\" type=\"" + item.Type + "\">"
-                        html += "   <div class=\"fm_main_file_area_li_div1\"";
-                        if (item.state == 1) {
-                            html += " style=\"background: url(/images/" + item.Type + ".png) no-repeat\"";
-                        }
-                        html += ">";
-                        html += "       <span></span>";
-                        html += "   </div>";
-                        html += "   <div class=\"fm_main_file_area_li_div2\">" + StringCurt(item.Name + "." + item.Type, 13) + "</div>";
-                        html += "</li>";
+                        html += FileHtml(item.ID, item.Name, item.Type, item.state);
                     });
                     $(".fm_main_file_area").html(html);
                 }
@@ -679,6 +672,36 @@
                 return val.substring(0, len) + "...";
             }
             return val;
+        }
+
+        //LI文件Html拼装
+        function FileHtml(ID, Name, Type, State) {
+            var html = "";
+            html += "<li fid='" + ID + "' title=\"" + StringCurt(Name + "." + Type, 0) + "\" state=\"" + State + "\" type=\"" + Type + "\">"
+            html += "   <div class=\"fm_main_file_area_li_div1\"";
+            switch (State) {
+                case 0:
+                    html += ">";
+                    html += "       <span></span>";
+                    break;
+                case 1:
+                    if (Type == "png" || Type == "jpg" || Type == "gif") {
+                        html += " style=\"background: none\"><img src=\"/upload/" + ID + "." + Type + "\" width=\"90\" height=\"92\"";
+                        html += ">";
+                        html += "       <span style=\"margin-left:-98px;\"></span>";
+                    }
+                    else {
+                        html += " style=\"background: url(/images/" + Type + ".png) no-repeat\"";
+                        html += ">";
+                        html += "       <span></span>";
+                    }
+                    break;
+            }
+
+            html += "   </div>";
+            html += "   <div class=\"fm_main_file_area_li_div2\">" + StringCurt(Name + "." + Type, 13) + "</div>";
+            html += "</li>";
+            return html;
         }
     </script>
 </head>

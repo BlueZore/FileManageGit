@@ -39,14 +39,8 @@
         //上传到服务器成功时，服务器返回相应信息到data里
         onUploadSuccess: function (file, data, response) {
             if (data != null) {
-                var arr = data.split('|');
-                var html = "";
-                html += "<li fid='" + arr[0] + "' title=\"" + arr[1] + "\" state=\"1\">";
-                html += "   <div class=\"fm_main_file_area_li_div1\" style=\"background: url(/images/" + arr[2] + ".png) no-repeat\">";
-                html += "       <span></span>";
-                html += "   </div>";
-                html += "   <div class=\"fm_main_file_area_li_div2\">" + StringCurt(arr[1], 13) + "</div>";
-                html += "</li>";
+                var arr = data.split('|'); 
+                var html = FileHtml(arr[0], arr[1], arr[2], 1);
                 $(".fm_main_file_area").prepend(html);
             }
         },
