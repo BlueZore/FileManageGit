@@ -18,6 +18,8 @@ namespace WebApplication2
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     public class UploadHandler : IHttpHandler, IRequiresSessionState
     {
+        string FileID = "";
+        FileManageEntities db = new FileManageEntities();
 
         public void ProcessRequest(HttpContext context)
         {
@@ -26,11 +28,19 @@ namespace WebApplication2
 
             HttpPostedFile file = context.Request.Files["Filedata"];
             string uploadPath = context.Server.MapPath("~/upload/");
+            string FileParentID = context.Request["ParentID"];
 
             if (file != null)
             {
-                file.SaveAs(uploadPath + file.FileName);
+                FileID = Guid.NewGuid().ToString();
+                string FileType = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1).ToLower();
+                string FileName = file.FileName.Substring(0, file.FileName.LastIndexOf('.'));
+                file.SaveAs(uploadPath + FileID + "." + FileType);
+                FileID += "|" + file.FileName + "|" + FileType;
+
+                new WebService().AddFile(FileID, FileName, FileParentID, FileType);
             }
+            context.Response.Write(FileID);
         }
 
         public bool IsReusable

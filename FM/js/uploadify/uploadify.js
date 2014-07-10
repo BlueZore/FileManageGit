@@ -9,6 +9,7 @@
         multi: false,
         fileTypeDesc: '支持的格式：',
         fileTypeExts: '*.jpg;*.jpge;*.gif;*.png;*.docx;*.doc;*.rar;*.xlsx;*.xls;*.zip;*.txt;*.pdf',
+        formData: { 'ParentID': "'" + $("#hidParentID").val() + "'" },
         removeTimeout: 10,
         fileSizeLimit: '25600',
         removeCompleted: false,
@@ -37,7 +38,7 @@
         },
         //上传到服务器成功时，服务器返回相应信息到data里
         onUploadSuccess: function (file, data, response) {
-            //alert("");
+            alert(data);
         },
         //选择文件后向队列中添加每个上传任务时都会触发
         onSelect: function (file) {

@@ -21,6 +21,7 @@ namespace WebApplication2
         /// <summary>
         /// 创建文件夹
         /// </summary>
+        /// <param name="FileID">文件夹ID</param>
         /// <param name="FileName">文件夹名</param>
         /// <param name="FileParentID">上级文件夹ID</param>
         /// <returns></returns>
@@ -37,6 +38,33 @@ namespace WebApplication2
                 (v.First().ParentIDs + FileParentID + "|") :
                 ("|" + FileParentID + "|");
             model.state = 0;
+            model.ModifiedDate = model.CreatedDate = DateTime.Now;
+            db.OS_Files.Add(model);
+            return db.SaveChanges();
+        }
+
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="FileID">文件ID</param>
+        /// <param name="FileName">文件名</param>
+        /// <param name="FileParentID">上级文件夹ID</param>
+        /// <param name="FileType">文件类型</param>
+        /// <returns></returns>
+        [WebMethod]
+        public int AddFile(string FileID, string FileName, string FileParentID,string FileType)
+        {
+            var v = db.OS_Files.Where(p => p.ID == new Guid(FileParentID));
+            OS_Files model = new OS_Files();
+            model.ID = new Guid(FileID);
+            model.Name = FileName;
+            model.ParentID = new Guid(FileParentID);
+            model.ParentIDs =
+                v.Count() > 0 ?
+                (v.First().ParentIDs + FileParentID + "|") :
+                ("|" + FileParentID + "|");
+            model.Type = FileType;
+            model.state = 1;
             model.ModifiedDate = model.CreatedDate = DateTime.Now;
             db.OS_Files.Add(model);
             return db.SaveChanges();
