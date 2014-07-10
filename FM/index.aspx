@@ -235,6 +235,91 @@
                     .fm_main_menu li a:hover {
                         background-color: #e9e9e9;
                     }
+
+        .fm_main_menu_check {
+            display: inline-block;
+            float: left;
+            margin-left: 10px;
+            margin-right: 5px;
+            margin-top: 14px;
+        }
+
+        .fm_main_menu_font {
+            float: left;
+            font-size: 12px;
+        }
+
+        .fm_main_menu_btn {
+            height: 28px;
+            width: 450px;
+            margin-top: 5px;
+            margin-left: 10px;
+            display: none;
+            float: left;
+        }
+
+            .fm_main_menu_btn li {
+                list-style: none;
+                float: left;
+                margin-right: 6px;
+                width: 69px;
+                height: 100%;
+            }
+
+                .fm_main_menu_btn li a {
+                    padding-left: 61px;
+                    padding-top: 11px;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                    .fm_main_menu_btn li a.fxbtn {
+                        background-image: url("/images/fx001.png");
+                    }
+
+                        .fm_main_menu_btn li a.fxbtn:hover {
+                            background-image: url("/images/fx002.png");
+                        }
+
+                    .fm_main_menu_btn li a.xzbtn {
+                        background-image: url("/images/xz001.png");
+                    }
+
+                        .fm_main_menu_btn li a.xzbtn:hover {
+                            background-image: url("/images/xz002.png");
+                        }
+
+                    .fm_main_menu_btn li a.scbtn {
+                        background-image: url("/images/sc001.png");
+                    }
+
+                        .fm_main_menu_btn li a.scbtn:hover {
+                            background-image: url("/images/sc002.png");
+                        }
+
+                    .fm_main_menu_btn li a.fzbtn {
+                        background-image: url("/images/fz001.png");
+                    }
+
+                        .fm_main_menu_btn li a.fzbtn:hover {
+                            background-image: url("/images/fz002.png");
+                        }
+
+                    .fm_main_menu_btn li a.ydbtn {
+                        background-image: url("/images/yd001.png");
+                    }
+
+                        .fm_main_menu_btn li a.ydbtn:hover {
+                            background-image: url("/images/yd002.png");
+                        }
+
+                    .fm_main_menu_btn li a.cmmbtn {
+                        background-image: url("/images/cmm001.png");
+                    }
+
+                        .fm_main_menu_btn li a.cmmbtn:hover {
+                            background-image: url("/images/cmm002.png");
+                        }
     </style>
 
 
@@ -286,7 +371,28 @@
                     $(this).show().css("background-position", "6px -340px").parent().css("border", "2px solid #2e80dc");
                     li_selected += "|" + index + "|";
                 }
+
+                FileSizeAndDelBtn();
                 return false;
+            });
+
+            //文件夹/文件全选
+            $(".fm_main_menu_check").bind("click", function () {
+                li_selected = "";
+                var tf = $(this).is(":checked");
+                $(".fm_main_file_area li").each(function (i) {
+                    if (tf) {
+                        $(this).find(".fm_main_file_area_li_div1").css("border", "2px solid #2e80dc").find("span").show().css("background-position", "6px -340px");
+                        li_selected += "|" + i + "|";
+                    }
+                    else {
+                        $(this).find(".fm_main_file_area_li_div1").css("border", "2px solid #fff").find("span").hide().css("background-position", "6px -305px");
+                        li_selected = "";
+                    }
+
+                });
+
+                FileSizeAndDelBtn();
             });
 
             //鼠标右键层
@@ -430,6 +536,30 @@
                 var $li = $(".fm_main_file_area li:eq(" + index + ")");
                 $(".fm_main_menu").hide();
             });
+
+            //多文件删除
+            $(".scbtn").bind("click", function () {
+                var tf = true;
+                var fileIDs = "";
+                $(".fm_main_file_area_li_div1 span:visible").each(function () {
+                    if ($(this).parents("li").attr("state") == "0") {
+                        tf = false;
+                        return;
+                    }
+                    else {
+                        fileIDs += "|" + $(this).parents("li").attr("fid");
+                    }
+                });
+
+                if (tf) {
+                    if (fileIDs.length > 0) {
+                        DeleteFiles(fileIDs.substring(1));
+                    }
+                }
+                else {
+                    SysAlert("选择文件中存在文件夹，无法删除");
+                }
+            });
         });
 
         //获取文件夹集
@@ -505,7 +635,7 @@
             });
         }
 
-        //获取文件夹集
+        //删除文件夹集
         function DeleteFile(fileID) {
             var html = "";
             $.ajax({
@@ -522,6 +652,35 @@
                 success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
                     if (data.d == 1) {
                         $("[fid='" + fileID + "']").remove();
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            });
+        }
+
+        //删除多个文件
+        function DeleteFiles(fileIDs) {
+            var html = "";
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "/WebService.asmx/DeleteFiles",
+                data: "{FileIDs:'" + fileIDs + "'}",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(XMLHttpRequest);
+                },
+                //timeout: 1000, // 设置请求超时时间
+                success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
+                    if (data.d == 1) {
+                        var arr = fileIDs.split('|');
+                        for (var i = 0; i < arr.length; i++) {
+                            $("[fid='" + arr[i] + "']").remove();
+                        }
+                        SysAlert("完成删除")
                     }
                     else {
                         alert("Error");
@@ -703,6 +862,18 @@
             html += "</li>";
             return html;
         }
+
+        //文件选择数和删除按钮 显示/隐藏
+        function FileSizeAndDelBtn() {
+            if (li_selected == "") {
+                $(".fm_main_menu_font").html("选择文件");
+                $(".fm_main_menu_btn").hide();
+            }
+            else {
+                $(".fm_main_menu_font").html("已选中" + $(".fm_main_file_area_li_div1 span:visible").size() + "个文件/文件夹");
+                $(".fm_main_menu_btn").show();
+            }
+        }
     </script>
 </head>
 <body>
@@ -740,6 +911,16 @@
             全部文件
         </div>
         <div class="fm_main_file_opare">
+            <input type="checkbox" value="选择文件" class="fm_main_menu_check" />
+            <label class="fm_main_menu_font">选择文件</label>
+            <ul class="fm_main_menu_btn">
+                <%--<li><a class="fzbtn">&nbsp;</a></li>
+                <li><a class="ydbtn">&nbsp;</a></li>
+                <li><a class="cmmbtn">&nbsp;</a></li>--%>
+                <li><a class="scbtn">&nbsp;</a></li>
+                <%--<li><a class="xzbtn">&nbsp;</a></li>
+                <li><a class="fxbtn">&nbsp;</a></li>--%>
+            </ul>
         </div>
         <ul class="fm_main_file_area">
             <%--<li>

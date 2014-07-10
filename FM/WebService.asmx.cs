@@ -52,7 +52,7 @@ namespace WebApplication2
         /// <param name="FileType">文件类型</param>
         /// <returns></returns>
         [WebMethod]
-        public int AddFile(string FileID, string FileName, string FileParentID,string FileType)
+        public int AddFile(string FileID, string FileName, string FileParentID, string FileType)
         {
             var v = db.OS_Files.Where(p => p.ID == new Guid(FileParentID));
             OS_Files model = new OS_Files();
@@ -103,6 +103,24 @@ namespace WebApplication2
                     select p;
 
             db.OS_Files.RemoveRange(v);
+            db.SaveChanges();
+            return 1;
+        }
+
+        /// <summary>
+        /// 删除多文件
+        /// </summary>
+        /// <param name="FileIDs">多文件ID</param>
+        /// <returns></returns>
+        [WebMethod]
+        public int DeleteFiles(string FileIDs)
+        {
+            string[] arr = FileIDs.Split('|');
+            foreach (string str in arr)
+            {
+                var v = db.OS_Files.Single(p => p.ID == new Guid(str));
+                db.OS_Files.Remove(v);
+            }
             db.SaveChanges();
             return 1;
         }
@@ -201,7 +219,7 @@ namespace WebApplication2
         [WebMethod]
         public string GetAllFilesForTree()
         {
-            var v = db.OS_Files.OrderByDescending(p => p.CreatedDate);
+            var v = db.OS_Files.Where(p => p.state == 0).OrderByDescending(p => p.CreatedDate);
             string JSON = "{ id: \"00000000-0000-0000-0000-000000000000\", pId: \"0\", name: \"全部文件\", open: true }";
             foreach (var _v in v)
             {
@@ -219,7 +237,7 @@ namespace WebApplication2
         /// <param name="AppType">应用程序类型</param>
         /// <returns></returns>
         [WebMethod]
-        public int CreateApp(string FileID, string FileName, string FileParentID,string AppType)
+        public int CreateApp(string FileID, string FileName, string FileParentID, string AppType)
         {
             var v = db.OS_Files.Where(p => p.ID == new Guid(FileParentID));
             OS_Files model = new OS_Files();

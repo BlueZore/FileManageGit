@@ -12,7 +12,7 @@
     _filter:alpha(opacity=25)/9;
     opacity: 0.25; 
     position:absolute;
-
+    z-index:9999;
 }
 
 .JDialog_MainLayer
@@ -24,6 +24,7 @@
     height:184px;
     top:0px;
     left:0px;
+    z-index:9999;
 }
 
 .JDialog_MainLayer_Shadow
@@ -34,6 +35,7 @@
     position:absolute; 
     margin-top:4px; 
     margin-left:4px;
+    z-index:9999;
 }
 
 .JDialog_MainLayer_Main
@@ -42,6 +44,7 @@
     height:180px; 
     background-color:White; 
     position:absolute;
+    z-index:9999;
 }
 
 .JDialog_MainLayer_Main_Top
