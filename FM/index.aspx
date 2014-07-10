@@ -81,7 +81,7 @@
         }
 
         .fm_main_top_right_a1 {
-            background: url("/images/btn_icon.gif") no-repeat scroll -100px -268px rgba(0, 0, 0, 0);
+            background: url("/images/btn_icon.gif") no-repeat scroll -100px -268px;
             float: right;
             height: 29px;
             margin: 12px 18px 0 0;
@@ -93,7 +93,7 @@
         }
 
         .fm_main_top_right_a2 {
-            background: url("/images/btn_icon.gif") no-repeat scroll -66px -238px rgba(0, 0, 0, 0);
+            background: url("/images/btn_icon.gif") no-repeat scroll -66px -238px;
             float: right;
             height: 29px;
             margin: 12px 0 0;
@@ -137,7 +137,7 @@
             }
 
         .fm_main_file_area_li_div1 {
-            background: url("/images/spritenew-f.gif") no-repeat scroll -24px 0 rgba(0, 0, 0, 0);
+            background: url("/images/spritenew-f.gif") no-repeat scroll -24px 0;
             width: 90px;
             height: 92px;
             margin-left: 26px;
@@ -145,7 +145,7 @@
         }
 
             .fm_main_file_area_li_div1 span {
-                background: url("/images/btn_icon.gif") no-repeat scroll 6px -305px rgba(0, 0, 0, 0);
+                background: url("/images/btn_icon.gif") no-repeat scroll 6px -305px;
                 height: 30px;
                 position: absolute;
                 width: 30px;
@@ -168,7 +168,7 @@
         }
 
         .fm_main_file_area_li_div4 {
-            background: url("/images/spritenew-f.gif") no-repeat scroll -24px 0 rgba(0, 0, 0, 0);
+            background: url("/images/spritenew-f.gif") no-repeat scroll -24px 0;
             width: 90px;
             height: 92px;
             margin-left: 26px;
@@ -185,7 +185,7 @@
         }
 
         .sure {
-            background: url("/images/btn_icon.gif") repeat scroll 0 -512px rgba(0, 0, 0, 0);
+            background: url("/images/btn_icon.gif") repeat scroll 0 -512px;
             cursor: pointer;
             display: inline-block;
             height: 22px;
@@ -194,7 +194,7 @@
         }
 
         .cancel {
-            background: url("/images/btn_icon.gif") repeat scroll -27px -512px rgba(0, 0, 0, 0);
+            background: url("/images/btn_icon.gif") repeat scroll -27px -512px;
             cursor: pointer;
             display: inline-block;
             height: 22px;
@@ -203,7 +203,7 @@
         }
 
         .fm_main_menu {
-            height: 130px;
+            height: 180px;
             width: 100px;
             border-top: #d2d2d2 1px solid;
             border-left: #d2d2d2 1px solid;
@@ -300,6 +300,14 @@
                         $(this).find(".fm_main_file_area_li_div1").css("border", "2px solid #2e80dc").find("span").show().css("background-position", "6px -340px");
                         li_selected = "|" + index + "|";
                     }
+                    if ($(this).attr("state") == "1") {
+                        $(".fm_main_menu li:eq(0)").css("color", "#c0c0c0").find("a").unbind("click");//打开
+                        $(".fm_main_menu li:eq(5)").removeAttr("style").find("a").bind("click", fm_main_menu_down);//下载
+                    }
+                    else {
+                        $(".fm_main_menu li:eq(0)").removeAttr("style").find("a").bind("click", fm_main_menu_open);//打开
+                        $(".fm_main_menu li:eq(5)").css("color", "#c0c0c0").find("a").unbind("click");//下载
+                    }
                     $(".fm_main_menu").css({ "margin-top": e.clientY - 20, "margin-left": e.clientX - 10 }).show();
                 }
                 return false;
@@ -315,7 +323,7 @@
             //创建临时文件夹
             $(".fm_main_top_left_a1").bind("click", function () {
                 var html = "";
-                html += "<li fid='" + Guid.NewGuid().ToString("D") + "'>";
+                html += "<li fid='" + Guid.NewGuid().ToString("D") + "' state=\"0\">";
                 html += "   <div class=\"fm_main_file_area_li_div4\">";
                 html += "       <span></span>";
                 html += "   </div>";
@@ -362,11 +370,11 @@
             });
 
             //打开
-            $(".fm_main_menu a:eq(0)").bind("click", function () {
+            function fm_main_menu_open() {
                 var index = li_selected.substring(0, li_selected.length - 1).substring(1);
                 var $li = $(".fm_main_file_area li:eq(" + index + ")");
                 location.href = "index.aspx?file=" + $li.attr("fid");
-            });
+            }
 
             //复制
             $(".fm_main_menu a:eq(1)").bind("click", function () {
@@ -405,6 +413,21 @@
                 DeleteFile($li.attr("fid"));
                 $(".fm_main_menu").hide();
             });
+
+            //下载
+            function fm_main_menu_down() {
+                var index = li_selected.substring(0, li_selected.length - 1).substring(1);
+                var $li = $(".fm_main_file_area li:eq(" + index + ")");
+                window.location.href = "/upload/" + $li.attr("fid") + "." + $li.attr("type");
+                $(".fm_main_menu").hide();
+            }
+
+            //分享
+            $(".fm_main_menu a:eq(6)").bind("click", function () {
+                var index = li_selected.substring(0, li_selected.length - 1).substring(1);
+                var $li = $(".fm_main_file_area li:eq(" + index + ")");
+                $(".fm_main_menu").hide();
+            });
         });
 
         //获取文件夹集
@@ -423,11 +446,15 @@
                 //timeout: 1000, // 设置请求超时时间
                 success: function (data) { // 请求成功后回调函数 参数：服务器返回数据,数据格式.
                     $.each(data.d, function (x, item) {
-                        html += "<li fid='" + item.ID + "'>";
-                        html += "   <div class=\"fm_main_file_area_li_div1\">";
+                        html += "<li fid='" + item.ID + "' title=\"" + StringCurt(item.Name + "." + item.Type, 0) + "\" state=\"" + item.state + "\" type=\"" + item.Type + "\">"
+                        html += "   <div class=\"fm_main_file_area_li_div1\"";
+                        if (item.state == 1) {
+                            html += " style=\"background: url(/images/" + item.Type + ".png) no-repeat\"";
+                        }
+                        html += ">";
                         html += "       <span></span>";
                         html += "   </div>";
-                        html += "   <div class=\"fm_main_file_area_li_div2\">" + item.Name + "</div>";
+                        html += "   <div class=\"fm_main_file_area_li_div2\">" + StringCurt(item.Name + "." + item.Type, 13) + "</div>";
                         html += "</li>";
                     });
                     $(".fm_main_file_area").html(html);
@@ -631,14 +658,27 @@
 
         //DIV层替换
         function reNameReplace() {
-            $(".fm_main_file_area_li_div3").parents("li").find("fm_main_file_area_li_div4").attr("class", "fm_main_file_area_li_div1");
+            $(".fm_main_file_area_li_div3").parents("li").find("fm_main_file_area_li_div4").attr("class", "fm_main_file_area_li_div1").attr("title", fileName);
             $(".fm_main_file_area_li_div3").replaceWith("<div class=\"fm_main_file_area_li_div2\">" + fileName + "</div>");
         }
 
+        //上方小提示块
         function SysAlert(meg) {
             $(".fm_main_alert").html(meg).fadeIn("slow", function () {
                 $(this).fadeOut("slow");
             });
+        }
+
+        //字符串截取 0不截
+        function StringCurt(val, len) {
+            val = val.replace(".null", "");
+            if (len == 0) {
+                return val;
+            }
+            if (val.length > len) {
+                return val.substring(0, len) + "...";
+            }
+            return val;
         }
     </script>
 </head>
@@ -651,6 +691,8 @@
             <li><a>移动</a></li>
             <li><a>重命名</a></li>
             <li><a>删除</a></li>
+            <li><a>下载</a></li>
+            <li><a>分享</a></li>
         </ul>
 
         <asp:HiddenField ID="hidParentID" runat="server" Value="00000000-0000-0000-0000-000000000000" />

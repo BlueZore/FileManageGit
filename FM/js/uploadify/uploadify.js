@@ -9,7 +9,7 @@
         multi: false,
         fileTypeDesc: '支持的格式：',
         fileTypeExts: '*.jpg;*.jpge;*.gif;*.png;*.docx;*.doc;*.rar;*.xlsx;*.xls;*.zip;*.txt;*.pdf',
-        formData: { 'ParentID': "'" + $("#hidParentID").val() + "'" },
+        formData: { 'ParentID': $("#hidParentID").val() },
         removeTimeout: 10,
         fileSizeLimit: '25600',
         removeCompleted: false,
@@ -38,7 +38,17 @@
         },
         //上传到服务器成功时，服务器返回相应信息到data里
         onUploadSuccess: function (file, data, response) {
-            alert(data);
+            if (data != null) {
+                var arr = data.split('|');
+                var html = "";
+                html += "<li fid='" + arr[0] + "' title=\"" + arr[1] + "\" state=\"1\">";
+                html += "   <div class=\"fm_main_file_area_li_div1\" style=\"background: url(/images/" + arr[2] + ".png) no-repeat\">";
+                html += "       <span></span>";
+                html += "   </div>";
+                html += "   <div class=\"fm_main_file_area_li_div2\">" + StringCurt(arr[1], 13) + "</div>";
+                html += "</li>";
+                $(".fm_main_file_area").prepend(html);
+            }
         },
         //选择文件后向队列中添加每个上传任务时都会触发
         onSelect: function (file) {
