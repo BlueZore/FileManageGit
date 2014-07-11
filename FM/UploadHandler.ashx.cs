@@ -37,7 +37,7 @@ namespace WebApplication2
                 string FileName = file.FileName.Substring(0, file.FileName.LastIndexOf('.'));
                 file.SaveAs(uploadPath + FileID + "." + FileType);
                 new WebService().AddFile(FileID, FileName, FileParentID, FileType);
-                FileID += "|" + file.FileName + "|" + FileType;
+                FileID += "|" + file.FileName + "|" + FileType + "|" + DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             }
             context.Response.Write(FileID);
         }

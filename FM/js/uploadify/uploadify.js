@@ -39,8 +39,8 @@
         //上传到服务器成功时，服务器返回相应信息到data里
         onUploadSuccess: function (file, data, response) {
             if (data != null) {
-                var arr = data.split('|'); 
-                var html = FileHtml(arr[0], arr[1], arr[2], 1);
+                var arr = data.split('|');
+                var html = FileHtml(arr[0], arr[1], arr[2], 1, arr[3]);
                 $(".fm_main_file_area").prepend(html);
             }
         },

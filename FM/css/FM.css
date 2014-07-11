@@ -1,2 +1,187 @@
-﻿body {
+﻿* {
+    margin: 0px;
+    padding: 0px;
 }
+
+.fm_main_alert {
+    width: 269px;
+    background-color: #ba8e35;
+    color: #fff;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    margin: 30px 45%;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.fm_main_top {
+    background: url("/images/outer_bn2_8960d8f.gif") repeat-x scroll left -53px #f7f7f7;
+    border-bottom: 1px solid #d2d2d2;
+    height: 50px;
+    line-height: 50px;
+}
+
+.fm_main_top_left {
+    float: left;
+    width: 200px;
+    margin-left: 10px;
+}
+
+.fm_main_top_left_a1 {
+    background: url(/images/btn_icon.gif) 0 -416px no-repeat;
+    display: inline-block;
+    width: 65px;
+    height: 28px;
+    line-height: 26px;
+    line-height: 29px\9;
+    padding-left: 31px;
+    color: #666;
+    vertical-align: middle;
+    margin: 0 0 0 5px;
+    _position: relative;
+    _top: 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+    .fm_main_top_left_a1:hover {
+        background-position: 0 -448px;
+    }
+
+.fm_main_top_left_a2 {
+}
+
+    .fm_main_top_left_a2:hover {
+    }
+
+.fm_main_top_right {
+    float: right;
+}
+
+.fm_main_top_right_a1 {
+    background: url("/images/btn_icon.gif") no-repeat scroll -100px -268px;
+    float: right;
+    height: 29px;
+    margin: 12px 18px 0 0;
+    width: 32px;
+}
+
+.fm_main_top_right_a1_hover {
+    background-position: -100px -238px;
+}
+
+.fm_main_top_right_a2 {
+    background: url("/images/btn_icon.gif") no-repeat scroll -66px -238px;
+    float: right;
+    height: 29px;
+    margin: 12px 0 0;
+    width: 32px;
+}
+
+.fm_main_top_right_a2_hover {
+    background-position: -66px -268px;
+}
+
+.fm_main_file {
+    font-size: 12px;
+    padding: 15px;
+}
+
+.fm_main_file_opare {
+    background: none repeat scroll 0 0 #f2f6ff;
+    border: 1px solid #d2d2d2;
+    border-radius: 2px;
+    color: #666;
+    height: 41px;
+    left: 0;
+    line-height: 41px;
+    margin: 0 10px;
+}
+
+.fm_main_menu_check {
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-top: 14px;
+}
+
+.fm_main_menu_font {
+    float: left;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.fm_main_menu_btn {
+    height: 28px;
+    width: 450px;
+    margin-top: 5px;
+    margin-left: 10px;
+    display: none;
+    float: left;
+}
+
+    .fm_main_menu_btn li {
+        list-style: none;
+        float: left;
+        margin-right: 6px;
+        width: 69px;
+        height: 100%;
+    }
+
+        .fm_main_menu_btn li a {
+            padding-left: 61px;
+            padding-top: 11px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+            .fm_main_menu_btn li a.fxbtn {
+                background-image: url("/images/fx001.png");
+            }
+
+                .fm_main_menu_btn li a.fxbtn:hover {
+                    background-image: url("/images/fx002.png");
+                }
+
+            .fm_main_menu_btn li a.xzbtn {
+                background-image: url("/images/xz001.png");
+            }
+
+                .fm_main_menu_btn li a.xzbtn:hover {
+                    background-image: url("/images/xz002.png");
+                }
+
+            .fm_main_menu_btn li a.scbtn {
+                background-image: url("/images/sc001.png");
+            }
+
+                .fm_main_menu_btn li a.scbtn:hover {
+                    background-image: url("/images/sc002.png");
+                }
+
+            .fm_main_menu_btn li a.fzbtn {
+                background-image: url("/images/fz001.png");
+            }
+
+                .fm_main_menu_btn li a.fzbtn:hover {
+                    background-image: url("/images/fz002.png");
+                }
+
+            .fm_main_menu_btn li a.ydbtn {
+                background-image: url("/images/yd001.png");
+            }
+
+                .fm_main_menu_btn li a.ydbtn:hover {
+                    background-image: url("/images/yd002.png");
+                }
+
+            .fm_main_menu_btn li a.cmmbtn {
+                background-image: url("/images/cmm001.png");
+            }
+
+                .fm_main_menu_btn li a.cmmbtn:hover {
+                    background-image: url("/images/cmm002.png");
+                }

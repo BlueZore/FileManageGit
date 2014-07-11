@@ -71,6 +71,8 @@
       <DependentUpon>FileManage.mdf</DependentUpon>
     </Content>
     <Content Include="css\FM.css" />
+    <Content Include="css\FM1.css" />
+    <Content Include="css\FM2.css" />
     <Content Include="images\aclose.png" />
     <Content Include="images\amax.png" />
     <Content Include="images\amin.png" />
@@ -92,6 +94,20 @@
     <Content Include="images\rar.png" />
     <Content Include="images\sc001.png" />
     <Content Include="images\sc002.png" />
+    <Content Include="images\SmallICON\doc.png" />
+    <Content Include="images\SmallICON\docx.png" />
+    <Content Include="images\SmallICON\file.png" />
+    <Content Include="images\SmallICON\gif.png" />
+    <Content Include="images\SmallICON\jpg.png" />
+    <Content Include="images\SmallICON\other.png" />
+    <Content Include="images\SmallICON\pdf.png" />
+    <Content Include="images\SmallICON\png.png" />
+    <Content Include="images\SmallICON\ppt.png" />
+    <Content Include="images\SmallICON\rar.png" />
+    <Content Include="images\SmallICON\txt.png" />
+    <Content Include="images\SmallICON\xls.png" />
+    <Content Include="images\SmallICON\xlsx.png" />
+    <Content Include="images\SmallICON\zip.png" />
     <Content Include="images\spritenew-f.gif" />
     <Content Include="images\sprite_n1_ccdf642.gif" />
     <Content Include="images\txt.png" />
@@ -104,7 +120,10 @@
     <Content Include="images\yd002.png" />
     <Content Include="images\zip.png" />
     <Content Include="index.aspx" />
-    <Content Include="js\FM.js" />
+    <Content Include="index2.aspx" />
+    <Content Include="js\Common.js" />
+    <Content Include="js\FM1.js" />
+    <Content Include="js\FM2.js" />
     <Content Include="js\Guid.js" />
     <Content Include="js\jquery-1.4.1.min.js" />
     <Content Include="js\JDialog\JDialog.htm" />
@@ -134,6 +153,7 @@
     <Content Include="js\ztree\img\zTreeStandard.png" />
     <Content Include="js\ztree\jquery.ztree.core-3.5.min.js" />
     <Content Include="js\ztree\zTreeStyle.css" />
+    <Content Include="main.aspx" />
     <Content Include="uploadify.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebService.asmx" />
@@ -160,6 +180,20 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index2.aspx.cs">
+      <DependentUpon>index2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index2.aspx.designer.cs">
+      <DependentUpon>index2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="main.aspx.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main.aspx.designer.cs">
+      <DependentUpon>main.aspx</DependentUpon>
     </Compile>
     <Compile Include="OS_Directorys.cs">
       <DependentUpon>FileManage.tt</DependentUpon>
