@@ -17,7 +17,7 @@
     <script src="js/uploadify/swfobject.js" type="text/javascript"></script>
     <link href="js/uploadify/uploadify.css" rel="stylesheet" />
     <script src="js/uploadify/uploadify.js" type="text/javascript"></script>
-    <link href="css/FM.css" rel="stylesheet" />
+    <link href="css/Common.css" rel="stylesheet" />
     <link href="css/FM1.css" rel="stylesheet" />
     <script src="js/Common.js" type="text/javascript"></script>
     <script src="js/FM1.js" type="text/javascript"></script>

@@ -70,12 +70,14 @@
     <Content Include="App_Data\FileManage_log.ldf">
       <DependentUpon>FileManage.mdf</DependentUpon>
     </Content>
-    <Content Include="css\FM.css" />
+    <Content Include="css\Common.css" />
     <Content Include="css\FM1.css" />
     <Content Include="css\FM2.css" />
     <Content Include="images\aclose.png" />
     <Content Include="images\amax.png" />
     <Content Include="images\amin.png" />
+    <Content Include="images\aside-hover-on.png" />
+    <Content Include="images\aside-right-shadow.jpg" />
     <Content Include="images\btn_icon.gif" />
     <Content Include="images\btn_sprit.gif" />
     <Content Include="images\cmm001.png" />
@@ -86,6 +88,16 @@
     <Content Include="images\fx002.png" />
     <Content Include="images\fz001.png" />
     <Content Include="images\fz002.png" />
+    <Content Include="images\mainMenu001.png" />
+    <Content Include="images\mainMenu002.png" />
+    <Content Include="images\mainMenu011.png" />
+    <Content Include="images\mainMenu012.png" />
+    <Content Include="images\mainMenu021.png" />
+    <Content Include="images\mainMenu022.png" />
+    <Content Include="images\mainMenu031.png" />
+    <Content Include="images\mainMenu032.png" />
+    <Content Include="images\mainMenu041.png" />
+    <Content Include="images\mainMenu042.png" />
     <Content Include="images\other.png" />
     <Content Include="images\outer_bn2_8960d8f.gif" />
     <Content Include="images\pdf.png" />

@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+body{
+    min-width:800px;
+}
+
 .fm_main_alert {
     width: 269px;
     background-color: #ba8e35;
